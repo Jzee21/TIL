@@ -171,3 +171,16 @@ push 명령어를 통해 업로드 한다.
 
 > 끝인가?
 
+
+
+> https://github.com/edutak/TIL
+>
+> 수업 정리 내용 사이트
+
+
+
+> https://www.gitignore.io/
+>
+> git으로 관리하지 않을 파일 목록을 만들어주는 사이트
+>
+> .gitignore 파일에 등록된 파일은 필터링 되어 git에 등록되지 않는다.
