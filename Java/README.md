@@ -10,7 +10,11 @@
 
 ## [Java](./java)
 
+
+
 # Week 1.
+
+---
 
 ## 1. install Java & IDE(Eclipse)
 
@@ -45,6 +49,8 @@ System.out.println("Hello Java?"");
 ```
 
 
+
+---
 
 ## 2. Variable
 
@@ -88,29 +94,33 @@ int str = Integer.parseInt("100") + 1;
 
 
 
+---
+
 ## 3. Operator
 
 ### 1. 연산자의 종류
 
   * 산술 연산자
 
-    ' +  -  *  /  %  <<  >> '
+    '	+	-	*	/	%	<<	>>	'
 
   * 비교 연산자
 
-    ' >  <  >=  <=  == != '
+    '	>	<	>=	<=	==	!=	'
 
   * 논리 연산자
 
-    ' &&  ||  !  &  |  ^  ~ '
+    '	&&	||	!	&	|	^	~	'
 
   * 대입 연산자
 
-    ' = '
+    '	=	'
 
   * 기타
 
-    ' ( type ) ?    :      instanceof '
+    '	( type )  ?	:	' 
+    
+    '	instanceof	'
 
 
 ```java
@@ -119,7 +129,9 @@ System.out.println(1&4);		// 0			// & : 비트연산자
 // ...
 ```
 
-* Compare values
+
+
+### 2. Compare values
 
 ```java
 String s1 = new String("java"); 
@@ -131,6 +143,8 @@ System.out.printf("s1.equals(s2) : %b\n\n",s1.equals(s2));	// true		// equals()
 ```
 
 
+
+---
 
 ## 4. Scanner & FileInputStream
 
@@ -179,6 +193,8 @@ sc = null;
 ```
 
 
+
+---
 
 ## 5. 조건문과 반복문
 
@@ -263,6 +279,8 @@ A: for ( int i=1 ; i<10 ; i++ ) {
 
 
 
+---
+
 ## 6. Array
 
 ### 1. 배열
@@ -336,6 +354,8 @@ for (int i = 0; i < num.length; i++) {
 
 
 
+---
+
 ## 7. 객체지향 프로그래밍
 
 ### 1. 클래스와 객체
@@ -406,7 +426,11 @@ System.out.println(Calc.add(99, 44));		// 객체 선언 없이 클래스 명으�
 
 
 
+---
+
 # Week 2.
+
+---
 
 ## 7. 객체지향 프로그래밍
 
