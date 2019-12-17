@@ -8,7 +8,7 @@
 
 ### (19. 12. 16) 2주간 배운 내용 정리하기
 
-* [Java Course](https://github.com/Jzee21/TIL/tree/master/Java)
+* [Java Course](https://github.com/Jzee21/TIL/tree/master/Java_Cource)
 
 
 
