@@ -114,6 +114,11 @@ $ git push origin master
 
 
 
+# Branch
+
+![git_flow_branch](Image/git_flow_branch.png)
+
+branch는 독립적인 개발 환경을 제공한다.
 
 
 
@@ -125,6 +130,11 @@ $ git push origin master
 
 
 
+
+
+
+
+## 참조
 
 > ## 마크다운 기반 블로그
 >
