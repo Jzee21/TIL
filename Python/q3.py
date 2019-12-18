@@ -12,6 +12,6 @@ else:
     print("짝수")
 
 if number%2 :           # also same
-    print("짝")
-else:
     print("홀")
+else:
+    print("짝")
