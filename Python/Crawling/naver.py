@@ -22,14 +22,9 @@ doc = bs(response, 'html.parser')   # html 파일 로드
 result = doc.select_one('.ah_k')    # 실검 1위
 result = doc.select('.ah_k')        # 실검 목록들
 
-# print(result)
-
 # webbrowser.open(url)
 search_url = "https://search.naver.com/search.naver?query="
 
 for i in range(5) :
     print(result[i].text)           # 실검 1~5위
     webbrowser.open(search_url + result[i].text)      # 1~5위 브라우저로 실행
-
-
-
