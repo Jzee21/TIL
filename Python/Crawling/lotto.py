@@ -51,12 +51,9 @@ print(bnusNo)
 def pickLotto() :
     picked = sorted(random.sample(range(1, 46), 6))
     matched = len(set(winner) & set(picked))    # Same num check
-    bnus = len(set(bnusNo) & set(picked))
 
     if matched == 6 :
         print("1등")
-    elif matched == 5 and bnus == 1 :       # error?
-        print("2등")
     elif matched == 5 :
         print("3등")
     elif matched == 4 :
