@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lunch</title>
+</head>
+<body>
+    <h1>Random Lunch List</h1>
+    <h5>now, we support {{items}} menus</h5>
+    <h4>{{ text }}</h4>
+    <ul>
+        {% for lunch in lunchs %}
+            <li>{{ lunch }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
