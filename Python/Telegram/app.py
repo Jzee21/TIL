@@ -28,6 +28,12 @@ def send() :
 
     return "Message Send Success이야"
 
+# Ready for Webhook
+@app.route(f"/{token}", methods=['POST'])
+def telegram() :
+
+    return
+
 
 # debug
 if __name__ == "__main__":
