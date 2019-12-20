@@ -1,0 +1,8 @@
+# python virtual folder
+telegram-venv/
+
+# path file
+.env
+
+# vscode settings
+.vscode/
