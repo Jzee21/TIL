@@ -40,7 +40,8 @@ def telegram() :
     # return get message
     return_msg = resp_msg
 
-    # if msg = lotto / 로또
+    # if msg = lotto / 로또, return_msg = lotto numbers
+    # or return_msg = resp_msg
     if resp_msg == "lotto" or resp_msg == "Lotto" or resp_msg == "로또" :
         picked = sorted(random.sample(range(1, 46), 6))
         return_msg = ""
