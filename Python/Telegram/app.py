@@ -42,11 +42,21 @@ def telegram() :
 
     # if msg = lotto / 로또, return_msg = lotto numbers
     # or return_msg = resp_msg
-    if resp_msg == "lotto" or resp_msg == "Lotto" or resp_msg == "로또" :
-        picked = sorted(random.sample(range(1, 46), 6))
-        return_msg = ""
-        for pick in picked :
-            return_msg += f"{pick} "
+    result = []
+    if resp_msg == "/lotto" or resp_msg == "/Lotto" or resp_msg == "/로또" :
+        # lotto 1 games
+        # picked = sorted(random.sample(range(1, 46), 6))
+        # return_msg = f"{picked}"
+        # lotto 5 games
+        [result.append(sorted(random.sample(range(1, 46), 6))) for _ in range(5) ]
+        return_msg = result
+    
+    # lunch
+    if resp_msg == "/lunch" or resp_msg == "/Lunch" or resp_msg == "/점심" :
+        return_msg = "Anythin you want"
+        #
+        menus = ["식당A", "식당B", "부대찌개", "맥도날드", "바스버거"]
+        return_msg = random.choice(menus)
 
     msg_url = app_url + f"/sendMessage?chat_id={resp_id}&text={return_msg}"
     requests.get(msg_url)
