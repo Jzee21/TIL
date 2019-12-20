@@ -157,3 +157,111 @@ boxes.sort()
 boxes.reverse()
 ```
 
+
+
+
+
+---
+
+`Empty day 2... sorry!`
+
+---
+
+
+
+`19.12.20`
+
+## Telegram Chatbot Example
+
+### 1. 독립 환경 생성
+
+>```bash
+>student@*** MINGW64 ~/Desktop/.../Til/Python (master)
+>$ ls
+>__pycache__  Basic  Crawling  Flask_example  README.md  requirements.txt  Telegram  telegram-venv
+>(telegram-venv)
+>```
+>
+>```bash
+>$ python -m venu telegram-venu
+>					# telegram-venu 이란 이름을 갖는 독립적인 가상환경 생성
+>$ source telegram-venu/Scripts/activate
+> (telegram-venu)	# 가상환경 실행 & 결과
+>```
+
+
+
+### 2. 독립 환경 설정
+
+
+
+
+
+
+
+
+
+//  
+
+ngrok -> C:\Users\student
+
+in cmd
+
+ngrok http 3000
+
+Forwording	https://aedf8ba6.ngrok.io
+
+
+
+*
+
+ngrok : free ver, if run again, url is changed
+
+so, when open, no not restart!
+
+
+
+#### setWebhook
+
+https://api.telegram.org/bot734322713:AAEyR0Rys8zBhx7BesYSmP2TGWTKdHeZkzI/setWebhook?url=https://aedf8ba6.ngrok.io/<token>
+
+734322713:AAEyR0Rys8zBhx7BesYSmP2TGWTKdHeZkzI
+
+url=<ngrok forwording url https>
+
+
+
+https://api.telegram.org/bot734322713:AAEyR0Rys8zBhx7BesYSmP2TGWTKdHeZkzI/setWebhook?url=https://aedf8ba6.ngrok.io/734322713:AAEyR0Rys8zBhx7BesYSmP2TGWTKdHeZkzI
+
+-> https://api.telegram.org/bot<tocken>/setWebhook?url=<ngrok.io, forwording https url>/<token>
+
+
+
+// python anywhere
+
+http://jzee.pythonanywhere.com/
+
+https://api.telegram.org/bot734322713:AAEyR0Rys8zBhx7BesYSmP2TGWTKdHeZkzI/setWebhook?url=https://jzee.pythonanywhere.com/734322713:AAEyR0Rys8zBhx7BesYSmP2TGWTKdHeZkzI
+
+
+
+#### deleteWebhook
+
+https://api.telegram.org/bot734322713:AAEyR0Rys8zBhx7BesYSmP2TGWTKdHeZkzI/deleteWebhook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
