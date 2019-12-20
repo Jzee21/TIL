@@ -32,7 +32,8 @@ def send() :
 @app.route(f"/{token}", methods=['POST'])
 def telegram() :
 
-    return
+    # return body, status_code
+    return '', 200
 
 
 # debug
