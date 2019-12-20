@@ -5,6 +5,7 @@ from decouple import config
 token = config("TELEGRAM_BOT_TOKEN")
 chat_id = config("CHAT_ID")
 app_url = f"https://api.telegram.org/bot{token}"
+# msg_url = app_url + f"/sendMessage?chat_id={}"
 
 update_utl = app_url + "/getUpdates"
 
