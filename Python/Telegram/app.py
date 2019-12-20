@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from decouple import config
 import requests
+import random
 
 app = Flask(__name__)
 
@@ -31,7 +32,24 @@ def send() :
 # Ready for Webhook
 @app.route(f"/{token}", methods=['POST'])
 def telegram() :
+    response = request.get_json()
+    resp_id = response['message']['from']['id']
+    resp_msg = response['message']['text']
+    print(f"[message]\nfrom id : {resp_id}\nmessage : {resp_msg}")
 
+    # return get message
+    return_msg = resp_msg
+
+    # if msg = lotto / 로또
+    if resp_msg == "lotto" or resp_msg == "Lotto" or resp_msg == "로또" :
+        picked = sorted(random.sample(range(1, 46), 6))
+        return_msg = ""
+        for pick in picked :
+            return_msg += f"{pick} "
+
+    msg_url = app_url + f"/sendMessage?chat_id={resp_id}&text={return_msg}"
+    requests.get(msg_url)
+    
     # return body, status_code
     return '', 200
 
