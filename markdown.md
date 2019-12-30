@@ -1,48 +1,60 @@
 # 마크다운(markdown) 기초
 
-## 제목(heading)
+## 0. 시작하기 전에...
 
-제목은 `#`
-
-'#'의 갯수로 제목의 레벨을 표현이 가능하며, 1~6까지 사용할 수 있다
-
-### H3
-
-#### H4
-
-##### H5
-
-###### h6
+markdown(.md) 파일은 `Typora`를 이용하여 작성한다.
 
 
 
-## 목록
+## 1. 제목(heading)
 
-* 순서가 없는 목록은 '*'을 통해 표현합니다.
+제목은 `#`으로 표현 가능하다.
+
+제목의 레벨은 `#`의 갯수로 표현이 가능하며, 1~6까지 표현 가능하다.
+
+### 제목3_H3
+
+#### 제목4_H4
+
+##### 제목5_H5
+
+###### 제목6_h6
+
+
+
+## 2. 목록
+
+목록은 순서가 있는 목록과 순서가 없는 목록으로 구분된다.
+
+* 순서가 없는 목록은 `*` 또는 `-`을 통해 표현할 수 있다.
+  
   * tab을 통해 목록의 레벨을 조정할 수 있습니다.
     * 한번 더!
       * 한번 더!
-        * 또 한번 더!
-      * 엔터 2번 또는
-    * Shift + Tab으로 상위 레벨로 이동
+    * 엔터 2번 또는
+  * Shift + Tab으로 상위 레벨로 이동
+  
+  
 
 1. 순서가 있는 목록
-2. 순서가 있는 목록은 `1.` 으로
-   1. 역시 tab을 통해 목록의 레벨을 조정할 수 있습니다.
+2.  `1.` 으로 순서를 나타내며
+   1. tab을 통해 레벨을 조정할 수 있습니다.
 
 
 
-## 링크
+## 3. 링크
 
-[구글신](https://google.com) `[name](address)`
+`[name](address)` 으로 링크를 줄 수 있다!
 
-으로 링크를 줄 수 있다!
+[구글갓](https://google.com) 
 
 [마크다운 활용법](https://guides.github.com/features/mastering-markdown/)
 
 
 
-## 코드 블록
+## 4. 코드 블록
+
+
 
 ```java
 // 자바 주석	[```java] 로 사용, Ctrl + Enter나 화살표로 바로 나갈 수 있음
@@ -60,39 +72,51 @@ def foo() :
 
 
 
-## 이미지
+## 5. 인용문
+
+> 인용문은 `>` 기호를 통해 작성한다.
+>
+> > 인용 문구를 쓰기도 하지만, 다양하게 사용해도 상관없다
+> >
+> > > 이것도 레벨이 있다
+
+
+
+## 6. 이미지
 
 ![다운로드](C:\Users\student\Downloads\다운로드.jpg)
 
-드래그&드롭
+위 이미지는 절대경로로 작성되어 외부에서 볼 때 이미지가 깨지게된다.
 
-이 경우 웹에 올리면 이미지가 손상되는 등의 현상이 있을 수 있다
 
-이걸 방지하기 위해서!
 
-file - 환경설정-이미지
+따라서, 다음과 같이 `Typora`를 설정한다.
+
+- 파일 > 환경 설정에서 `이미지` 탭을 클릭하고 아래의 내용들을 체크한다.
+
+  - 로컬 이미지에 위 규칙 적용
+  - 온라인 이미지에 위 규칙 적용
+  - 가능하다면 상대적 위치 사용
+
+- copy image to custom folder 선택 후
+
+  - ./Image로 설정
+
+- 설정 후 이미지부터는 마크다운 파일의 위치를 기준으로 Image 폴더를 생성하여 이미지가 저장된다.
+
+  
 
 ![제목 없음](Image/제목 없음.png)
 
-설정 후 이미지 추가 시 Til 경로에 
-
-Image 폴더가 상대경로로서 생성된다
+(설정 후 이미지 추가 시 Til 경로에 Image 폴더가 상대경로로서 생성된다)
 
 
 
-## 표
+## 7. 표
 
-본분 - 표 - 표삽입(Ctril + T)
+표는 `Typora` 기능을 이용해 추가하는 것을 추천한다.
 
-| 순번 | 이름   | 나이 |
-| ---- | ------ | ---- |
-| 1    | 최시영 | ?    |
-| 2    | 김현호 | ?    |
-| 3    | ?      | !    |
-
-
-
-표 copy (by code mode)
+본분 > 표 > 표삽입 (Ctril + T)
 
 | 순번 | 이름   | 나이 |
 | ---- | ------ | ---- |
@@ -102,17 +126,23 @@ Image 폴더가 상대경로로서 생성된다
 
 
 
-## 기타
+표 Copy (by code mode)(code mode : ctrl + /)
 
-> 인용문은 `>` 기호를 통해 작성합니다.
->
-> > 인용 문구를 쓰기도 하지만, 정의 등 따로 표현할 때 사용해도 좋다
-> >
-> > > 이것도 레벨이?!
+| 순번 | 이름   | 나이 |
+| ---- | ------ | ---- |
+| 1    | 최시영 | ?    |
+| 2    | 김현호 | ?    |
+| 3    | ?      | !    |
+
+
+
+## 8. 기타
+
+수직선 (`---`을 이용해서 만든다.)
 
 ---
 
-`---`을 이용해서 만든 수직선
+
 
 *이텔릭체 기울임체*  	`*이텔릭체 기울임체*`
 
@@ -124,23 +154,18 @@ Image 폴더가 상대경로로서 생성된다
 
 `+)`
 
-[주니어 개발자 인터뷰](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
+블로그 등등이 makedown으로 연결 가능하다.
 
-[카카오 기술 블로그](https://tech.kakao.com/)
+markdown으로 작성된 예
 
-[Notion, 생산성 note](https://www.google.com/search?q=notion&rlz=1C1OKWM_koKR877KR877&sxsrf=ACYBGNQdPSPQ-0Idp3oIZKfAsre-SxOdFw:1576471381945&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6quDFrbnmAhWLH3AKHW7yBCIQ_AUoAXoECAsQAw&biw=1280&bih=864)
+- [주니어 개발자 인터뷰](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
 
-블로그 등등 makedown으로 연결 가능
-
-'+' Notion : 에버노트와 비슷함
+- [카카오 기술 블로그](https://tech.kakao.com/)
 
 
 
-> 신기한것 들 투성이다
->
-> 모르는게 너무 많았다
->
-> 하지만 이제 2시라고!
+`+)`
 
+[Notion, 생산성 note](https://www.google.com/search?q=notion&rlz=1C1OKWM_koKR877KR877&sxsrf=ACYBGNQdPSPQ-0Idp3oIZKfAsre-SxOdFw:1576471381945&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6quDFrbnmAhWLH3AKHW7yBCIQ_AUoAXoECAsQAw&biw=1280&bih=864) (에버노트와 비슷함)
 
 
