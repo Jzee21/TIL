@@ -10,12 +10,12 @@
 
 ## List
 
-### 1. Git Basic
+### [1. Git Basic](./01_Git.md)
 
-### 2. Branch
+### 2. [Branch](./branch.md)
 
-- Branch
-- Merge Commit
+- #### Branch
+- #### Merge Commit
 
 ### 3. Git Status & Undoing
 
@@ -34,12 +34,29 @@
 
 ### 9. Errors
 
-- Push Error
+- [Push Error](./Push Error.md)
 - Whitespace Error
 
+ -
 
+## List
 
+- ### [Git Basic](./01_Git.md)
 
+- Bransh
+
+  - Brash
+  - Merge Commit
+
+- Git Status & Undoing
+
+- Stash
+
+- Reset vs Revert
+
+- 
+
+ -
 
 ## Reference Link
 
@@ -48,10 +65,6 @@
 - [Git Commit Tip](https://meetup.toast.com/posts/106)
 
 - [Gitignore](https://www.gitignore.io/)
-
-  > Git으로 관리하지 않을 파일 목록(.gitignore)을 만들어주는 사이트
-  >
-  > .gitignore 파일에 등록된 파일 또는 경로는 필터링되어 Git 에 업로드되지 않는다.
 
 - https://tagilog.tistory.com/377
 - https://rogerdudler.github.io/git-guide/index.ko.html
