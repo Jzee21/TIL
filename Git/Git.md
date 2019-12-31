@@ -230,6 +230,75 @@ $ git pull origin master
 
  
 
+## 3. 활용 예시
+
+> 서로 다른 로컬 저장소에서 작업하는 상황을 예로 들어 설명한다.
+>
+> 작업을 완료한 이후에는 항상 `push`,
+>
+> 작업을 시작하기 전에는 항상 `pull`!!
+
+- 학원
+
+  ```bash
+  $ git pull origin master			# update local repository
+  # study
+  $ git add .
+  $ git commit -m 'Commit Message'
+  # before go home
+  $ git push origin master			# update remote repository
+  ```
+
+- 집
+
+  ```bash
+  $ git pull origin master			# update local repository
+  # study
+  # before go to sleep
+  $ git push origin master			# update remote repository
+  ```
+
+
+
+### 충돌 상황
+
+- 만약, 원격 저장소의 이력과 로컬 저장소의 이력이 다른 경우에는 아래의 에러가 발생한다.
+
+  ``` bash
+  $ git push origin master
+  To https://github.com/Jzee21/Database.git
+   ! [rejected]        master -> master (fetch first)
+  error: failed to push some refs to 'https://github.com/Jzee21/Database.git'
+  # 원격 저장소의 작업내용(work - commit)과 로컬 내용이 다르다.
+  hint: Updates were rejected because the remote contains work that you do
+  hint: not have locally. This is usually caused by another repository pushing
+  # 원격 저장소의 변경사항(changes)을 통합하고 다시 Push하라
+  # 통합 예) git pull...
+  hint: to the same ref. You may want to first integrate the remote changes
+  hint: (e.g., 'git pull ...') before pushing again.
+  hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+  ```
+
+  이 메세지를 보게 된다면, 
+
+  로컬에서 `git log` 와 `원격 저장소(Github)`의 커밋 이력을 서로 비교하고 다른 부분을 체크한다.
+
+  ```bash
+  $ git pull origin master
+  ```
+
+  위 명령을 통해 원격 저장소의 이력을 내려받아 로컬 저장소의 이력과 통합한 뒤
+
+  ```bash
+  $ git push origin master
+  ```
+
+  을 통해 원격 저장소에 업로드 한다.
+
+ 
+
+ 
+
  ## Reference link
 
 - [Git](https://git-scm.com/book/ko/v2)
