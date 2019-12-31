@@ -239,7 +239,6 @@
       fe5fae8 add README
    ```
    
-   
 5. master에 병합
 
    ```bash
@@ -294,6 +293,7 @@
     ```bash
     $ git add .
     $ git commit
+    ```
 ```
    
    * vim 편집기 화면이 나타납니다.
@@ -321,8 +321,8 @@
    * 76ea855 Complete test
    * d2d4267 complte index page
    * fe5fae8 add README
-    ```
-   
+```
+
    
 
 
@@ -334,3 +334,4 @@
     ```
     
     
+
