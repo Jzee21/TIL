@@ -10,31 +10,31 @@
 
 ## List
 
-### 1. [Git Basic](./01_Git.md)
+#### 1. [Git Basic](./Git.md)
 
-### 2. [Branch](./branch.md)
+#### 2. [Branch](./branch.md)
 
 - Branch
 - Merge Commit
 
-### 3. Git Status & Undoing
+#### 3. Git Status & Undoing
 
-### 4. Stash
+#### 4. Stash
 
-### 5. Reset vs Revert
+#### 5. Reset vs Revert
 
-### 6. Git  Flow Models
+#### 6. Git  Flow Models
 
 - Shared Repository Model
 - Fork & Pull Model
 
-### 7. Pull Request
+#### 7. Pull Request
 
-### 8. Github Pages
+#### 8. Github Pages
 
-### 9. Errors
+#### 9. Errors
 
-- [Push Error](./Push Error.md)
+- [Push Error](./Push_Error.md)
 - Whitespace Error
 
  
@@ -44,11 +44,11 @@
 ## Reference Link
 
 - [Git](https://git-scm.com/book/ko/v2)
-
 - [Git Commit Tip](https://meetup.toast.com/posts/106)
-
 - [Gitignore](https://www.gitignore.io/)
-
+- [Github Pages](https://pages.github.com/)
+- [Start Bootstrap](https://startbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
 - https://tagilog.tistory.com/377
 - https://rogerdudler.github.io/git-guide/index.ko.html
 
