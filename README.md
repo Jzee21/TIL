@@ -2,15 +2,13 @@
 
 > Today I Learned
 >
-> - 하루동안 학습한 내용이나 개발과 관련된 경험들을 간단한 기록으로 남긴다.
+> - 학습한 내용이나 개발과 관련된 경험들을 간단한 기록으로 남긴다.
 
 
 
 ## 작성
 
 - 폴더와 파일명은 `영문`으로 작성한다.
-
-- 공백은 최대한 `_`를 사용하여 대체한다.
 
 - markdown(.md)파일의 작성은 `Typora`를 이용하며
 
@@ -22,19 +20,29 @@
 
 
 
-## 분류
+## Git
+
+- Git Usage
+- Reference link
+  - [Git](https://git-scm.com/book/ko/v2)
+  + [Git Commit Tip](https://meetup.toast.com/posts/106)
+  + [Gitignore](https://www.gitignore.io/)
 
 
 
+## Java
+
+- Java Usage
+- Oracle JDBC
 
 
 
+## Python
 
-
-
-
-
-## 목록
+- Python Usage
+- Crowling
+- Flask
+- Telegram
 
 
 
@@ -47,11 +55,15 @@
 
 ## ECT
 
-+ [git](./git)
+
++ TIL Reference link
+
+  + [TunaHG's TIL](https://github.com/TunaHG/TIL)
+  + [Yun's TIL](https://github.com/cheese10yun/TIL)
+  + [Namjun Kim's TIL](https://github.com/namjunemy/TIL)
 + 마크다운
 + [Github Pages](https://pages.github.com/)
-+ [Start Bootstrap](https://pages.github.com/)
++ [Start Bootstrap](https://startbootstrap.com/)
 + [Font Awesome](https://fontawesome.com/)
-
 
 
