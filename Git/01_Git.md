@@ -262,9 +262,13 @@ $ git pull origin master
 
 ### 충돌 상황
 
-- 만약, 원격 저장소의 이력과 로컬 저장소의 이력이 다른 경우에는 아래의 에러가 발생한다.
+- 다른 로컬 저장소에서 진행한 작업을 또다른 로컬 저장소에서 이어나갈 경우
 
-  ``` bash
+  `pull`을 진행하지 않고 진행한 다음 `push`를 진행할 때 아래의 에러가 발생할 수 있다.
+
+- 이는 원격 저장소의 이력과 로컬 저장소의 이력이 다를 때 발생하는 에러이다.
+
+  ```bash
   $ git push origin master
   To https://github.com/Jzee21/Database.git
    ! [rejected]        master -> master (fetch first)
@@ -279,39 +283,45 @@ $ git pull origin master
   hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   ```
 
-  이 메세지를 보게 된다면, 
+  이 메세지를 보게 된다면,
 
-  로컬에서 `git log` 와 `원격 저장소(Github)`의 커밋 이력을 서로 비교하고 다른 부분을 체크한다.
+  - 원격 저장소(Github)의 커밋 이력과 로컬 저장소에서 `git log`를 이용한 결과를 서로 비교하여
+
+    다른 부분을 체크한다.
+
+  - `pull`을 이용하여 변경 내용을 통합한 후 다시 `push`한다.
 
   ```bash
+  $ git log --oneline
+  d93c5a9 Update .....
+  465d681 Edit.....
+  8cf1b68 Add .....
+  06da258 Edit.....
+  e94b5c9 Add .....
+  
   $ git pull origin master
-  ```
-
-  위 명령을 통해 원격 저장소의 이력을 내려받아 로컬 저장소의 이력과 통합한 뒤
-
-  ```bash
+  # merge
   $ git push origin master
   ```
 
-  을 통해 원격 저장소에 업로드 한다.
-
  
 
  
+
+  
 
  ## Reference link
 
 - [Git](https://git-scm.com/book/ko/v2)
+- [Git Commit Tip](https://meetup.toast.com/posts/106)
+- [Gitignore](https://www.gitignore.io/)
 
-+ [Git Commit Tip](https://meetup.toast.com/posts/106)
-
-+ [Gitignore](https://www.gitignore.io/)
-
-  > Git으로 관리하지 않을 파일 목록(.gitignore)을 만들어주는 사이트
-  >
-  > .gitignore 파일에 등록된 파일 또는 경로는 필터링되어 Git 에 업로드되지 않는다.
+> Git으로 관리하지 않을 파일 목록(.gitignore)을 만들어주는 사이트
+>
+> .gitignore 파일에 등록된 파일 또는 경로는 필터링되어 Git 에 업로드되지 않는다.
 
 - https://tagilog.tistory.com/377
 - https://rogerdudler.github.io/git-guide/index.ko.html
 
  
+
