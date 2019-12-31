@@ -10,12 +10,12 @@
 
 ## List
 
-### [1. Git Basic](./01_Git.md)
+### 1. [Git Basic](./01_Git.md)
 
 ### 2. [Branch](./branch.md)
 
-- #### Branch
-- #### Merge Commit
+- Branch
+- Merge Commit
 
 ### 3. Git Status & Undoing
 
@@ -37,26 +37,9 @@
 - [Push Error](./Push Error.md)
 - Whitespace Error
 
- -
+ 
 
-## List
-
-- ### [Git Basic](./01_Git.md)
-
-- Bransh
-
-  - Brash
-  - Merge Commit
-
-- Git Status & Undoing
-
-- Stash
-
-- Reset vs Revert
-
-- 
-
- -
+ 
 
 ## Reference Link
 
