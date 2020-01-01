@@ -1,3 +1,5 @@
+# Branch
+
 ### 상황 1. fast-foward
 
 > fast-foward는 feature 브랜치 생성된 이후 master 브랜치에 변경 사항이 없는 상황
