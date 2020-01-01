@@ -1,6 +1,6 @@
 # Branch
 
-### 상황 1. fast-foward
+### 1. fast-foward
 
 > fast-foward는 feature 브랜치 생성된 이후 master 브랜치에 변경 사항이 없는 상황
 
@@ -20,7 +20,7 @@
    $ touch test.txt
    $ git add test.txt
    $ git commit -m 'Complete test'
-   [feature/test 76ea855] Complete test
+   [feature/test 76e] Complete test
     1 file changed, 0 insertions(+), 0 deletions(-)
     create mode 100644 test.txt
    ```
@@ -33,7 +33,6 @@
    ```bash
    (feature/test) $ git checkout master
    Switched to branch 'master'
-   (master) $
    ```
    
    
@@ -51,12 +50,14 @@
 5. 결과 -> fast-foward (단순히 HEAD를 이동)
 
    ```bash
-   Updating d2d4267..76ea855
+   Updating d2d..76e
    Fast-forward
     test.txt | 0
     1 file changed, 0 insertions(+), 0 deletions(-)
     create mode 100644 test.txt
    ```
+
+   - `HEAD` : 지금 작업하는 로컬 브랜치를 가리키는 포인터
 
    
 
@@ -64,16 +65,16 @@
 
    ```bash
    $ git branch -d feature/test
-   Deleted branch feature/test (was 76ea855).
+   Deleted branch feature/test (was 76e).
    ```
+
    
-   
-   
+
    
 
 ---
 
-### 상황 2. merge commit
+### 2. merge commit
 
 > 서로 다른 이력(commit)을 병합(merge)하는 과정에서 다른 파일이 수정되어 있는 상황
 >
@@ -82,8 +83,8 @@
 1. feature/signout branch 생성 및 이동
 
    ```bash
-   # $ git branch feature/signout 	 # 생성
-   # $ git checkout feature/signout	 # 이동
+   $ git branch feature/signout 	 # 생성
+   $ git checkout feature/signout	 # 이동
    $ git checkout -b feature/signout # 생성 & 이동
    ```
 
@@ -95,11 +96,13 @@
    $ touch signout.html
    $ git add .
    $ git commit -m 'add signout.html'
-   [feature/signout bc3bd67] add signout.html
+   [feature/signout bc3] add signout.html
     1 file changed, 0 insertions(+), 0 deletions(-)
     create mode 100644 signout.html
    $ git log --oneline
-   # ...ah...
+   c13 (HEAD -> feature/signout) Complete signout
+   820 (master) Complete test
+   824 Complete index page
    ```
 
    
@@ -110,7 +113,8 @@
    $ git checkout master
    Switched to branch 'master'
    $ git log --oneline
-   # ...ah...
+   8203 (HEAD -> master) Complete test
+   8241 Complete index page
    ```
 
    
@@ -127,7 +131,9 @@
 
    ```bash
    $ git log --oneline
-   # ...ah...
+   d06 (HEAD -> master) Hotfix on master
+   820 Complete test
+   824 Complete index page
    ```
 
    
@@ -136,8 +142,6 @@
 
    ```bash
    (master) $ git merge feature/signout
-   # ...ah...
-   $ git branch -d feature/signout
    ```
 
    
@@ -145,42 +149,75 @@
 6. 결과 -> 자동으로 *merge commit 발생*
 
    * vim 편집기 화면이 나타납니다.
+
    * 자동으로 작성된 커밋 메시지를 확인하고, `esc`를 누른 후 `:wq`를 입력하여 저장 및 종료를 합니다.
       * `w` : write
       * `q` : quit
+      
    * 커밋을  확인 해봅시다.
 
-   ```bash
-   $ git merge feature/signout
-   Merge made by the 'recursive' strategy.
-    signout.html | 0
-    1 file changed, 0 insertions(+), 0 deletions(-)
-    create mode 100644 signout.html
-   ```
+      ```bash
+      Merge made by the 'recursive' strategy.
+       signout.html | 0
+       1 file changed, 0 insertions(+), 0 deletions(-)
+       create mode 100644 signout.html
+      ```
 
-   
+   - 커밋을 확인한다.
+
+     ```bash
+     $ git log --oneline
+     cd2 (HEAD -> master) Merge branch 'feature/signout'
+     d06 Hotfix on master
+     c13 (feature/signout) Complete signout
+     820 Complete test
+     824 Complete index page
+     ```
+
+      
+
+     
 
 7. 그래프 확인하기
 
    ```bash
    $ git log --oneline --graph
+   *   cd2 (HEAD -> master) Merge branch 'feature/signout'
+   |\
+   | * c13 (feature/signout) Complete signout
+   * | d06 Hotfix on master
+   |/
+   * 820 Complete test
+   * 824 Complete index page
+   * 4cb Add README
    ```
-
    
 
+   
 8. branch 삭제
 
+   ```bash
+   $ git branch -d feature/signout
+   Deleted branch feature/signout (was c13).
+   ```
    
+   > 현업에서는 작업을 종료한 브런치를 남겨두는 경우도 있다.
+   
+    
+   
+    
 
 ---
 
-### 상황 3. merge commit 충돌
+### 3. merge commit 충돌
 
 > 서로 다른 이력(commit)을 병합(merge)하는 과정에서 동일 파일이 수정되어 있는 상황
 >
 > git이 auto merging을 하지 못하고, 해당 파일의 위치에 라벨링을 해준다.
 >
 > 원하는 형태의 코드로 직접 수정을 하고 merge commit을 발생 시켜야 한다.
+
+ 
 
 1. feature/board branch 생성 및 이동
 
@@ -201,11 +238,16 @@
    
    ```bash
    $ git commit -m  'complete board & update README'
-   [feature/board 5f0f686] complete board & update README
+   [feature/board 5f0] complete board & update README
     2 files changed, 1 insertion(+)
     create mode 100644 board.html
    $ git log --oneline
-   # ...ah...
+   f41 (HEAD -> feature/board) Complete board $ Update README
+   cd2 (master) Merge branch 'feature/signout'
+   d06 Hotfix on master
+   c13 Complete signout
+   820 Complete test
+   824 Complete index page
    ```
    
    
@@ -232,14 +274,15 @@
    
    ```bash
    $ git log --oneline
-      09963ce (HEAD -> master) Update README on master
-      cc13ed4 Merge branch 'feature/signout'
-      cf7800d Hotfix on Master
-      bc3bd67 add signout.html
-      76ea855 Complete test
-      d2d4267 complte index page
-      fe5fae8 add README
+   684 (HEAD -> master) Update README on master
+   cd2 Merge branch 'feature/signout'
+   d06 Hotfix on master
+   c13 Complete signout
+   820 Complete test
+   824 Complete index page
    ```
+   
+    
    
 5. master에 병합
 
@@ -270,9 +313,7 @@
 
 6. 결과 -> *merge conflict발생*
 
-
-
-
+ 
 
 7. 충돌 확인 및 해결
 
@@ -284,7 +325,7 @@
    >>>>>>> feature/board
    ```
    
-   * HEAD(현재상황), 아래에 feature/board 변화내역이 각각 기록
+   * `HEAD`(현재상황), 아래에 `feature/board` 변화내역이 각각 기록
    * 원하는 형태로 코드를 수정한다.
 
 
@@ -296,44 +337,42 @@
     $ git add .
     $ git commit
     ```
-```
-   
-   * vim 편집기 화면이 나타납니다.
-   * 자동으로 작성된 커밋 메시지를 확인하고, `esc`를 누른 후 `:wq`를 입력하여 저장 및 종료를 합니다.
-      * `w` : write
-      * `q` : quit
-   * 커밋이  확인 해봅시다.
-   
-   
-   
+    
+    - vim 편집기 화면이 나타납니다.
+    - 자동으로 작성된 커밋 메시지를 확인하고, `esc`를 누른 후 `:wq`를 입력하여 저장 및 종료를 합니다.
+      - `w` : write
+      - `q` : quit
+    - 커밋이  확인 해봅시다.
+    
+    
+
 9. 그래프 확인하기
 
     ```bash
    $ git log --oneline --graph
-   *   16071ca (HEAD -> master) Merge branch 'feature/board'
+   *   dce (HEAD -> master) Merge branch 'feature/board'
    |\
-   | * 5f0f686 (feature/board) complete board & update README
-   * | 09963ce Update README on master
+   | * f41 (feature/board) Complete board $ Update README
+   * | 684 Update README on master
    |/
-   *   cc13ed4 Merge branch 'feature/signout'
+   *   cd2 Merge branch 'feature/signout'
    |\
-   | * bc3bd67 add signout.html
-   * | cf7800d Hotfix on Master
+   | * c13 Complete signout
+   * | d06 Hotfix on master
    |/
-   * 76ea855 Complete test
-   * d2d4267 complte index page
-   * fe5fae8 add README
-```
-
+   * 820 Complete test
+   * 824 Complete index page
+   ```
    
+    
 
+10.  branch 삭제
 
-10. branch 삭제
-
-    ``` bash
+    ```bash
     $ git branch -d $ git branch -d feature/board
-    Deleted branch feature/board (was 5f0f686).
+    Deleted branch feature/board (was f41).
     ```
-    
-    
 
+     
+
+ 
