@@ -8,13 +8,11 @@
 $ git reset {hash_code}
 ```
 
-* `기본(--mixed)` : 이후 변경 사항을 WD에 유지시켜줌
+* 기본(`--mixed`) : 이후 변경 사항을 Working Directory에 유지시켜줌
 
-* `--hard` : 이후 변경 사항이 모두 삭제됨.
+* `--hard` : 이후 변경 사항이 모두 삭제됨.       **! 주의**
 
-  **주의**
-
-* `--sotf` : 지금 작업하고 있는 내용(WD) 및 변경사항을 WD에 유지시켜줌.
+* `--sotf` : 지금 작업하고 있는 내용(Working Directory) 및 변경사항을 Working Directory에 유지시켜줌.
 
 
 
@@ -26,7 +24,8 @@ $ git reset {hash_code}
 $ git revert {hash_code}
 ```
 
-* vim `->` 커밋 메세지 작성
+* `vim` 에서 `commit message` 작성
+* `{hash_code}` : `log` 상 최상위 `Hash Code`
 
 ```bash
 $ git log --oneline
