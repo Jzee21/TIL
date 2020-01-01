@@ -1,6 +1,6 @@
 # Git status
 
-## 1. commit
+### 1. commit
 
 1. Working Directory 는 있으나 Staging Area는 비어있는 상황
 
@@ -20,7 +20,7 @@
 
    - `nothing added to commit` 
      - commit 할 것이 없다	: Staging Area가 비어있다.
-   - `untracked files present'
+   - `untracked files present`
      - untracked file이 있다	: `git commit` 이력이 담기지 않은 파일은 있다.
 
     
@@ -40,33 +40,34 @@
 
 
 
-### status
+### 2. Status
 
-1. 새로운 파일 생성 후 status
+1. 새로운 파일을 생성한 경우
 
    ```bash
-   (master) $ touch a.txt
-   (master) $ git status
+   $ touch a.txt
+   $ git status
    On branch master
    
    No commits yet
-   # commit 이력에 담긴 적 없는 파일
+   
    Untracked files:
-   # 커밋 될 목록(staging area)에 추가하려면, git add <file>
      (use "git add <file>..." to include in what will be committed)
            a.txt
    
    nothing added to commit but untracked files present (use "git add" to track)
    ```
 
-   
+   - `Untracked files` : `commit` 이력에 담긴 적 없는 파일
+   - `(use ...)` : `commit` 될 목록(Staging Area)에 추가하려면, `git add <file>`
 
-2. a.txt Add 후
+    
+
+2. add를 한 경우
 
    ```bash
-   (master) $ git add a.txt
-   
-   (master) $ git status
+   $ git add a.txt
+   $ git status
    On branch master
    
    No commits yet
@@ -76,32 +77,34 @@
            new file:   a.txt
    ```
 
-   
+   - `Changes to be committed` : `commit` 되어야 할 변경된 사항들(changes)
 
 
 
 
 
-### commit 메세지 작성하기
+### 3. commit 메세지 작성하기
 
 > #### 부제 - vim 활용 기초
 
-	$ git commit
-	# Please enter the commit message for your changes. Lines starting
-	# with '#' will be ignored, and an empty message aborts the commit.
-	#
-	# On branch master
-	#
-	# Initial commit
-	#
-	# Changes to be committed:
-	#       new file:   a.txt
-	#
+```bash
+$ git commit
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#       new file:   a.txt
+#
+```
 
 * 편집(입력)모드 : `i`
   * 문서 편집 기능
 * 명령 모드 : `esc`
-  * `dd` - 해당 줄 삭제
+  * `dd` - 해당 줄(Line) 삭제
   * `:wq` - 저장 및 종료
     * `w` : write
     * `q` :quit
@@ -112,12 +115,12 @@
 $ git commit -m 'commit message'
 ```
 
-* 커밋 메세지는 항상 해당 작업 이력을 나타낼 수 있도록 작성한다.
+* `commit message`는 항상 해당 작업 이력을 나타낼 수 있도록 작성한다.
 * 일관적인 포맷으로 작성하도록 노력한다.
 
 
 
-### log
+### 4. log
 
 > git commit은 해시 값(hash value)에 의해서 구분된다.
 >
@@ -137,10 +140,12 @@ Date:   Wed Dec 18 09:42:48 2019 +0900
 ```bash
 $ git log --oneline
 4c5b24d (HEAD -> master) Add a.txt
-$ git log -1
 $ git log --oneline --graph
 $ git log -1 --oneline
 ```
 
+- `--oneline` : commit message의 제목만 간단하게 표시한다.
+- `-{number}` : `{number}` 만큼의 commit message 를 보여준다.
+- `--graph` : graph를 그려서 commit message를 보여준다.
 
-
+ 
