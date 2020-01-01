@@ -21,10 +21,7 @@
 ## Git
 
 - Git Usage
-- Reference link
-  - [Git](https://git-scm.com/book/ko/v2)
-  + [Git Commit Tip](https://meetup.toast.com/posts/106)
-  + [Gitignore](https://www.gitignore.io/)
+- Github Pages
 
 
 
@@ -60,6 +57,7 @@
   + [Yun's TIL](https://github.com/cheese10yun/TIL)
   + [Namjun Kim's TIL](https://github.com/namjunemy/TIL)
 + 마크다운
++ [Gitignore](https://www.gitignore.io/)
 + [Github Pages](https://pages.github.com/)
 + [Start Bootstrap](https://startbootstrap.com/)
 + [Font Awesome](https://fontawesome.com/)
