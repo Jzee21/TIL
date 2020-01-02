@@ -61,6 +61,11 @@ create table Customers (
 );
 
 
+insert into customers 
+values(1, 'doyeon', 'happydoyeon88@gmail.com', '010-0000-0000');
+
+commit;
+
 ```
 
 
