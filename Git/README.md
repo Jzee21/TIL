@@ -17,25 +17,25 @@
 - Branch
 - Merge Commit
 
-#### 3. Git Status & Undoing
+#### 3. [Git Status](./Git_Status.md)
 
-#### 4. Stash
+#### 4. [Undoing](.Undoing.md)
 
-#### 5. Reset vs Revert
+#### 4. [Stash](./Stash.md)
 
-#### 6. Git  Flow Models
+#### 6. [Reset vs Revert](./Reset_vs_Revert.md)
+
+#### 7. [Git  Flow Models](./Github_Flow_Models.md)
 
 - Shared Repository Model
 - Fork & Pull Model
 
-#### 7. Pull Request
-
-#### 8. Github Pages
+#### 8. [Github Pages](./Github_Pages.md)
 
 #### 9. Errors
 
 - [Push Error](./Push_Error.md)
-- Whitespace Error
+- [Whitespace Error](./Whitespace_Error.md)
 
  
 
