@@ -67,6 +67,10 @@ public class ConnectionHelper {
 `ex01.jdbc`
 
 ``` java
+public class JDBCProjectEx2 extends JFrame implements ActionListener{
+    
+    //.....
+    
 	Connection conn;
 	Statement stmt;
 	PreparedStatement pstmtInsert, pstmtDelete;
@@ -103,5 +107,9 @@ public class ConnectionHelper {
 		}
 		
 	} // dbConnect()
+    
+    // .....
+    
+}
 ```
 
