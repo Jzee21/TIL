@@ -20,7 +20,7 @@
 
 ## Git
 
-- Git Usage
+- [Git Usage](./Git/README.md)
 - Github Pages
 
 
