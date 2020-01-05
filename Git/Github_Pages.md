@@ -53,7 +53,7 @@ Github에 새 저장소(repository)를 만든다.
 
       > 위 내용을 설정하면 탭의 내용이 변경된다.
       >
-      > ![github_io_title](..\Image\github_io_title.png)
+      > ![github_io_title](../Image/github_io_title.png)
 
        
 
@@ -64,7 +64,7 @@ Github에 새 저장소(repository)를 만든다.
       <span class="d-block d-lg-none">Jaeyoung Sim</span>
       ```
 
-      > ![github_io_title2](..\Image\github_io_title2.png)
+      > ![github_io_title2](../Image/github_io_title2.png)
       >
       > 창의 넓이에 따라 자동적으로 형태가 바뀌는 반응형 Template.
       >
