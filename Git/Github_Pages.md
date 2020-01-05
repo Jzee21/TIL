@@ -53,7 +53,7 @@ Github에 새 저장소(repository)를 만든다.
 
       > 위 내용을 설정하면 탭의 내용이 변경된다.
       >
-      > ![image-20200105180537640](..\Image\github_io_title.png)
+      > ![github_io_title](..\Image\github_io_title.png)
 
        
 
