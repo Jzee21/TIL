@@ -112,6 +112,18 @@ def foo() :
 
 
 
+> Typora를 사용하면 Image의 경로에 `\`를 사용한다.
+>
+> 이미지 경로는 `\` 대신 `/` 로 바꾸도록 한다.
+>
+> 상위 폴더는 ..으로 표시한다.
+>
+> 예시) ../Image/github_io_title.png
+>
+> ![github_io_title2](./Image/github_io_title.png)
+
+
+
 ## 7. 표
 
 표는 `Typora` 기능을 이용해 추가하는 것을 추천한다.
