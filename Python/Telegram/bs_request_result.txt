@@ -1,0 +1,19 @@
+{
+	'update_id': 257363944, 
+	'message': {
+		'message_id': 9, 
+		'from': {
+			'id': 959354333, 
+			'is_bot': False, 
+			'first_name': 'Jaeyoung', 
+			'language_code': 'ko'
+		}, 
+		'chat': {
+			'id': 959354333, 
+			'first_name': 'Jaeyoung', 
+			'type': 'private'
+		}, 
+		'date': 1576819872, 
+		'text': 'test hi'
+	}
+}
