@@ -1,0 +1,5 @@
+https://www.pythonanywhere.com/
+
+console_bash
+
+$ pip3 install python-decouple --user
