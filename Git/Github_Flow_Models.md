@@ -27,7 +27,8 @@
 - `feature branch`는 이름을 생성할 때, 기능을 명시적으로 나타낸다.
 
   ```bash
-  a
+  (master) $ git checkout -b feature/accounts-login
+  (feature/accounts-login) $
   ```
 
 - `Commit`을 통해 작업의 이력을 남긴다.

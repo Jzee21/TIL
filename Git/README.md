@@ -12,6 +12,8 @@
 
 #### 1. [Git Basic](./Git.md)
 
+- [.gitignore](./gitignore.md)
+
 #### 2. [Branch](./branch.md)
 
 - Branch
@@ -21,7 +23,7 @@
 
 #### 4. [Undoing](.Undoing.md)
 
-#### 4. [Stash](./Stash.md)
+#### 5. [Stash](./Stash.md)
 
 #### 6. [Reset vs Revert](./Reset_vs_Revert.md)
 

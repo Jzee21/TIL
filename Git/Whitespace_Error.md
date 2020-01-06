@@ -11,6 +11,8 @@ The file will have its original line endings in your working directory.
 >
 > UNIX 시스템에서는 한 줄의 끝이 `LF(Line Feed)`로 끝나는 반면, Windows에서는 줄 하나가 `CR(Carriage Return)`과 `LF(Line Feed)`가 합친 CRLF로 이루어지기 때문이다.
 
+
+
 ## 해결방법
 
 > Git에서는 자동으로 이를 변환해주는 기능을 가지고 있다.
@@ -32,6 +34,8 @@ $ git config --global core.autocrlf true input
 ```bash
 $ git config --global core.safecrlf false
 ```
+
+
 
 ## 참고사항
 
