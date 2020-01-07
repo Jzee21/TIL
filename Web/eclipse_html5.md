@@ -68,4 +68,31 @@
 > `style` 태그를 이용하여 CSS 코드를 삽입했다.
 
 
+### JSP 사용 시 Error
+```java
+Description	Resource	Path	Location	Type
+Access restriction: The method 'ServletRequest.getParameter(String)' is not API (restriction on required library 'C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\servlet-api.jar')	result.jsp	/web02_html5/WebContent/jsp	line 16	JSP Problem
+```
+> Tomcat 에서 가져온 jsp-api.jar를 Eclipse에서 인식하지 못해 발생하는 Error
+> Sol 1) 인식을 강제
+> Sol 2) 각 프로젝트 별 .jar 파일 추가
 
+Sol 1)
+
+![image-20200107155936988](./Image/image-20200107155936988.png)
+
+> Java - Compiler - Errors/Warnings
+>
+> Depercated and restricted API - Forbidden reference(access rules)
+>
+> 에서 Error을 ignore로 변경한다.
+
+
+
+Sol2)
+
+![image-20200107162638304](./Image/image-20200107162638304.png)
+
+> 각각의 프로젝트 - WebContent - WEB-INF - lib 경로 안에
+>
+> 필요한 .jar 파일을 붙여넣는다.
