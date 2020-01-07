@@ -31,13 +31,13 @@ exec dbms_xdb.sethttpport(9090);
 
 > CSS
 >
-> Java Properties File
+> Java Properties File		default : ISO-8859-1
 >
 > Java Source File
 >
 > JavaScript Source File
 >
-> JSP
+> JSP								default : ISO-8859-1
 >
 > > Default encodeing : `UTF-8`로 변경
 
