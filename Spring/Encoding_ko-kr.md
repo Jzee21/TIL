@@ -83,6 +83,10 @@
   > <web-app> </web-app> 태그 사이에서
   >
   > `Start ~ End` 사이의 `<filter>`와 `<filter-mappint>` 부분을 추가한다.
+  
+  > `HomeController.java` 에서 `home.jsp`로 넘어가는 
+  >
+  > `String formattedDate` 데이터의 Encoding 문제 해결
 
 
 
@@ -115,6 +119,8 @@
   > `home.jsp`파일 예시
   >
   > `Start ~ End` 사이에 `Page Encoding`과 관련된 JSP 페이지 디렉티브를 추가한다.
+  
+  > `home.jsp` 파일에서 추가되는 내용의 Encoding 문제 해결
 
 
 
