@@ -68,6 +68,8 @@
 > `style` 태그를 이용하여 CSS 코드를 삽입했다.
 
 
+
+
 ### JSP 사용 시 Error
 ```java
 Description	Resource	Path	Location	Type

@@ -19,15 +19,25 @@ exec dbms_xdb.sethttpport(9090);
 
 
 
+
+
+
+> workspace content type 변경
+
+![image-20200106170718765](./Image/image-20200106170718765.png)
+
+
+
+
+
+
 > Eclipse 프로젝트 생성
 >
 > New - Dynamic Web Project
 
 ![image-20200106171445422](./Image/image-20200106171445422.png)
 
-> workspace content type 변경
 
-![image-20200106170718765](./Image/image-20200106170718765.png)
 
 > CSS
 >
@@ -39,7 +49,7 @@ exec dbms_xdb.sethttpport(9090);
 >
 > JSP								default : ISO-8859-1
 >
-> > Default encodeing : `UTF-8`로 변경
+> **Default encodeing : `UTF-8`로 변경**
 
 
 
@@ -109,7 +119,7 @@ exec dbms_xdb.sethttpport(9090);
 
 
 
-> 내용 추가
+> JSP 테스트 코드 추가
 
 ![image-20200106165737362](./Image/image-20200106165737362.png)
 
