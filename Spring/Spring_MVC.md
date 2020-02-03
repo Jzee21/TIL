@@ -41,6 +41,17 @@ Proxy
 
 2 front controller
 
+> mvc -> FrontControllerServlet & web.xml
+>
+> ```xml
+> <servlet-mapping>
+>     <servlet-name>FrontControllerServlet</servlet-name>
+>     <url-pattern>/</url-pattern> <!-- front controller 방식 -->
+> </servlet-mapping>
+> ```
+>
+> 
+
 1 MVC
 
 
@@ -52,3 +63,4 @@ Proxy
 왜 2.5라고????
 
 Spring에서 Servlet 사용 시 Servlet의 버전을 2.5로 사용한다.
+
