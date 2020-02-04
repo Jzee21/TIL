@@ -64,3 +64,36 @@ Proxy
 
 Spring에서 Servlet 사용 시 Servlet의 버전을 2.5로 사용한다.
 
+---
+
+![image-20200204112247858](Image/image-20200204112247858.png)
+
+Spring Project 에서 Context 확인 방법
+
+프로젝트 - 설정 - Web Project Settings
+
+
+
+
+
+---
+
+### 요청의 처리를 위한 데이터의 공유
+
+> 1. 1개의 요청&응답
+> 2. 브라우저가 구동
+> 3. 서버의 구동
+
+- Server (javax.servlet.http.*)
+
+  1. HttpServletRequest
+  2. HttpSession
+  3. ServletContext
+
+  
+
+- Client (JSP 내장객체)
+
+  1. request
+  2. session
+  3. applicationl
