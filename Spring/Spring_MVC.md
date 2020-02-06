@@ -97,3 +97,43 @@ Spring Project 에서 Context 확인 방법
   1. request
   2. session
   3. applicationl
+
+
+
+
+
+---
+
+@Controller 메서드 리턴타입
+
+ModelAndView : 모델 + 뷰(명시 or 자동-url)
+
+String : 뷰(수동 명시)
+
+void : 뷰(자동 - url)
+
+Map : 모델 + 뷰(자동 - url)
+
+
+
+@Controller 메서드 매개변수타입
+
+HttpServletRequest	: form으로 데이터가 넘어올 때
+
+HttpServletResponse	:  ...
+
+String	: 요청으로 form이 넘어올 때, <input>의 name과 같은 변수명에 자동 저장
+
+`설계 시 [form의 파라미터 = 매개변수 이름 = db 컬럼 이름] 설계  >  직관성과 코딩이 편해진다`
+
+
+
+
+
+@Controller
+
+@RequestMapping(value=" ", method=...)
+
+@RequestParam(value=" ", required=(boolean) , defaultValue=" ")
+
+@ModelAttribute(" ")	<- VO
