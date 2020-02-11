@@ -139,3 +139,30 @@ servlet-context.xml
 > `edu.multi.mvc`와 `edu.multi.mybatis`가 같은 내용이 있어 문제 발생
 >
 > 중첩되는 내용이 없고, 다수의 패키지를 사용할 때 `<context:componemt-scan>` 태그를 다수 사용하여 등록할 수 있다.
+
+
+
+
+
+
+
+
+
+---
+
+```java
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MemberDAO {
+	
+	@Autowired
+    @Qualifier	<--	다수의 DB 사용 시
+        			다수의 mybatis-spring.xml 파일 생성, 연결
+	SqlSession session;
+	
+```
+
