@@ -56,3 +56,77 @@ init 0					-- 0 : 0~6	run level
 ```
 
 
+
+
+
+```
+|
+>		-- 리다이렉션
+>>
+<
+<<
+```
+
+- ```
+  명령1 | 명령2
+  ```
+
+  > `명령1`의 결과물을 `명령2`에 연결해라
+
+- ```
+  명령어 > file명
+  ```
+
+  > 명령어의 결과를 파일명으로 저장
+  >
+  > - 기존 내용을 삭제하고 저장 (덮어쓰기)
+
+- ```
+  명령어 >> file명
+  ```
+
+  > 명령어의 결과를 파일명으로 저장
+  >
+  > - 기존의 내용 뒤에 추가로 저장 (이어쓰기)
+
+- ```
+  명령어 < 파일명
+  ```
+
+  > 명령어를 입력파일로 지정
+  >
+  > - 명령어를 파일에서 불러와 실행
+
+
+
+
+
+```
+grep <text> <target>
+
+[root@localhost ~]# grep test hardlink
+test
+test2
+```
+
+```
+[root@localhost ~]# echo "a\n abc\n aedfg\n" > sample.txt
+[root@localhost ~]# 
+[root@localhost ~]# cat sample.txt 
+a\n abc\n aedfg\n
+[root@localhost ~]# 
+[root@localhost ~]# grep 'a' sample.txt 
+a\n abc\n aedfg\n
+[root@localhost ~]# grep '[0-9]' sample.txt 
+[root@localhost ~]# 
+[root@localhost ~]# grep '[A-Z]' sample.txt 
+[root@localhost ~]# 
+[root@localhost ~]# grep '[a-z]' sample.txt 
+a\n abc\n aedfg\n
+[root@localhost ~]# grep '[a-zA-Z0-9]' sample.txt 
+a\n abc\n aedfg\n
+[root@localhost ~]# 
+```
+
+![image-20200220141735515](Image/image-20200220141735515.png)
+
