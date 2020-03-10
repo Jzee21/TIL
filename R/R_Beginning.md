@@ -998,6 +998,19 @@ k       # [1] 5 6
 
 
 
+```r
+## 6. 결측치(missing value) -> NA
+##     > 데이터 분석을 위해서는 반드시!
+##     > NA 값을 없애거나 다른 값으로 바꿔주어야 한다.
+# 
+x <- c(10,20,30,NA,40,50,60,NA,NA,100)
+#
+##     이 vector 안에 결측치는 몇개가 있는가?
+#
+is.na(x)          # [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE
+sum(is.na(x))     # [1] 3       # FALSE : 0  // TRUE : 1
+```
+
 
 
 
