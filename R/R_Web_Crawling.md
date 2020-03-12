@@ -233,7 +233,7 @@ content         # 1페이지 리뷰들
 # ---------------------------------------------- #
 ```
 
-[Go to 1-2](#1_2.-실습-(Naver-영화-평점))
+[Go to 1-2](#https://github.com/Jzee21/TIL/blob/master/R/R_Web_Crawling.md#1_2-%EC%8B%A4%EC%8A%B5-naver-%EC%98%81%ED%99%94-%ED%8F%89%EC%A0%90)
 
 ```R
 #
