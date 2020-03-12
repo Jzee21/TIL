@@ -238,41 +238,24 @@ content         # 1페이지 리뷰들
 # # 1. 영화 제목 가져오기
 #
 # html 중 selecter에 맞는 element를 가져온다.
-nodes <- html_nodes(page_html, "td.title > a.movie")
-
-# element가 가지고 있는 text(tag 사이의 내용)를 가져온다.
-movie_title <- html_text(nodes)
-
-movie_title		# 1페이지 영화 제목들(10개)
-
-#
-# # 2. 영화 평점 가져오기
-#
-nodes <- html_nodes(page_html, "div.list_netizen_score > em")
-movie_point <- html_text(nodes)
-movie_point     # 1페이지 영화 평점들
-
-#
-# # 3. 영화 한줄평 가져오기
-#
-nodes <- html_nodes(page_html, "td.title")
-content <- html_text(nodes)
-
-# \t로 이루어진 공백을 제거하고
-# 한줄평이 있는 라인만 빼냈다.
-for (i in 1:length(content)) {
-  temp <- str_remove_all(content[i], "\t")
-  temp <- str_split(temp, "\n")
-  content[i] <- temp[[1]][11]
+movie_title = vector(mode = "character", length = 10)
+for (i in 1:10) {
+  myPath <- str_c('//*[@id="old_content"]/table/tbody/tr[',i,']/td[2]/a[1]/text()')
+  nodes <- html_nodes(page_html, xpath = myPath)
+  movie_title[i] <- html_text(nodes)
 }
-content         # 1페이지 리뷰들
-
-#
+movie_title
 ```
 
 
 
 
+
+### 3. 심화 실습
+
+> 로튼토마토 사이트에서 2019년 인기 영화 100개의
+>
+> 제목, user rating, genre 추출해서 파일로 저장한다.
 
 
 
