@@ -151,7 +151,9 @@
 
 
 
-### 2. 실습 - Naver 영화 평점 Scraping 하기
+#### 1-2. 실습 (Naver 영화 평점)
+
+> Naver 영화 평점 Scraping 하기
 
 ```R
 # 필요 패키지 설치 및 로딩
@@ -203,6 +205,74 @@ content         # 1페이지 리뷰들
 
 #
 ```
+
+
+
+### 2. XPATH
+
+#### 2-1. XPath란?
+
+> **XPath**(XML Path Language)는 [W3C](https://ko.wikipedia.org/wiki/W3C)의 표준으로 [확장 생성 언어](https://ko.wikipedia.org/wiki/XML) 문서의 구조를 통해 경로 위에 지정한 구문을 사용하여 항목을 배치하고 처리하는 방법을 기술하는 언어
+
+> 우리는 `Chrome 개발자 도구`에서 지원하는 XPath를 가져다 쓴다.
+>
+> 다만, Chrome의 제공기능은 Chrome의 개발자도구가 자동 추가한 코드로 인해 작동하지 않을 수 있다.
+
+![image-20200312093027449](Image/image-20200312093027449.png)
+
+
+
+#### 2-2 실습 (Naver 영화 평점)
+
+```R
+# 필요 패키지 설치 및 로딩
+# 네이버 영화의 유저 평점 페이지
+# html 페이지 읽기
+# ---------------------------------------------- #
+# # 여기까지 1-2와 동일
+# ---------------------------------------------- #
+```
+
+[Go to 1-2](#1-2.-실습-(Naver-영화 -평점))
+
+```R
+#
+# # 1. 영화 제목 가져오기
+#
+# html 중 selecter에 맞는 element를 가져온다.
+nodes <- html_nodes(page_html, "td.title > a.movie")
+
+# element가 가지고 있는 text(tag 사이의 내용)를 가져온다.
+movie_title <- html_text(nodes)
+
+movie_title		# 1페이지 영화 제목들(10개)
+
+#
+# # 2. 영화 평점 가져오기
+#
+nodes <- html_nodes(page_html, "div.list_netizen_score > em")
+movie_point <- html_text(nodes)
+movie_point     # 1페이지 영화 평점들
+
+#
+# # 3. 영화 한줄평 가져오기
+#
+nodes <- html_nodes(page_html, "td.title")
+content <- html_text(nodes)
+
+# \t로 이루어진 공백을 제거하고
+# 한줄평이 있는 라인만 빼냈다.
+for (i in 1:length(content)) {
+  temp <- str_remove_all(content[i], "\t")
+  temp <- str_split(temp, "\n")
+  content[i] <- temp[[1]][11]
+}
+content         # 1페이지 리뷰들
+
+#
+```
+
+
 
 
 
