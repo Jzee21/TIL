@@ -37,7 +37,7 @@
 
 
 
-#### 1-0. WebStorm 설치
+#### 1_0. WebStorm 설치
 
 > 설치는 [WebStorm](https://www.jetbrains.com/ko-kr/webstorm/) 에서 설치하면 된다.
 >
@@ -71,7 +71,7 @@
 
 
 
-#### 1-1. Selector란?
+#### 1_1. Selector란?
 
 ```html
 <!DOCTYPE html>
@@ -151,7 +151,7 @@
 
 
 
-#### 1-2. 실습 (Naver 영화 평점)
+#### 1_2. 실습 (Naver 영화 평점)
 
 > Naver 영화 평점 Scraping 하기
 
@@ -210,7 +210,7 @@ content         # 1페이지 리뷰들
 
 ### 2. XPATH
 
-#### 2-1. XPath란?
+#### 2_1. XPath란?
 
 > **XPath**(XML Path Language)는 [W3C](https://ko.wikipedia.org/wiki/W3C)의 표준으로 [확장 생성 언어](https://ko.wikipedia.org/wiki/XML) 문서의 구조를 통해 경로 위에 지정한 구문을 사용하여 항목을 배치하고 처리하는 방법을 기술하는 언어
 
@@ -222,7 +222,7 @@ content         # 1페이지 리뷰들
 
 
 
-#### 2-2 실습 (Naver 영화 평점)
+#### 2_2 실습 (Naver 영화 평점)
 
 ```R
 # 필요 패키지 설치 및 로딩
@@ -233,7 +233,7 @@ content         # 1페이지 리뷰들
 # ---------------------------------------------- #
 ```
 
-[Go to 1-2](#1-2.-실습-(Naver-영화-평점))
+[Go to 1-2](#1_2.-실습-(Naver-영화-평점))
 
 ```R
 #
