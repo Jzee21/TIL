@@ -434,5 +434,196 @@ bind_rows(df1, df2)
 
 ## 연습문제
 
+> ```R
+> # ggplot2 package의 mpg data 활용
+> 
+> install.packages("ggplot2")
+> library(ggplot2)
+> 
+> mpg = as.data.frame(mpg)   # mpg data frame
+> 
+> # 주요컬럼
+> # manufacturer : 제조회사
+> # displ : 배기량
+> # cyl : 실린더 개수
+> # drv : 구동 방식
+> # hwy : 고속도로 연비
+> # class : 자동차 종류
+> # model : 자동차 모델명
+> # year : 생산연도
+> # trans : 변속기 종류
+> # cty : 도시 연비
+> # fl : 연료 종류
+> ```
 
+```R
+# 1. 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려 한다. 
+# displ(배기량)이 4 이하인 자동차와 4 초과인 자동차 중 
+# 어떤 자동차의 hwy(고속도로 연비)가 평균적으로 더 높은지 확인하세요.
+
+df <- mutate(mpg,
+             DISPL_DIFF = ifelse(displ <= 4, "4 LOW", "4 HIGH")) %>%
+      group_by(DISPL_DIFF) %>%
+      summarise(AVG_HWY = mean(hwy))
+df
+# # A tibble: 2 x 2
+# DISPL_DIFF AVG_HWY
+# <chr>        <dbl>
+# 1 4 HIGH      17.6
+# 2 4 LOW       26.0    < 배기량 4 이하의 차량의 hwy가 더 높다.
+
+```
+
+
+
+```R
+# 2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 한다. 
+# "audi"와 "toyota" 중 어느 manufacturer(제조회사)의 cty(도시 연비)가 
+# 평균적으로 더 높은지 확인하세요.
+df <- filter(mpg, manufacturer %in% c("audi", "toyota")) %>%
+      group_by(manufacturer) %>%
+      summarise(AVG_CTY = mean(cty))
+df
+# # A tibble: 2 x 2
+# manufacturer AVG_CTY
+# <chr>          <dbl>
+# 1 audi          17.6
+# 2 toyota        18.5  < toyota 의 cty 연비 평균이 더 높다.
+
+```
+
+
+
+```R
+# 3. "chevrolet", "ford", "honda" 자동차의 고속도로 연비 평균을 알아보려고 한다. 
+# 이 회사들의 데이터를 추출한 후 hwy(고속도로 연비) 전체 평균을 구하세요.
+df <- filter(mpg, manufacturer %in% c("chevrolet", "ford", "honda")) %>%
+    summarise(AVG_HWY = mean(hwy))
+df
+#     AVG_HWY
+# 1  22.50943
+
+```
+
+
+
+```R
+# 4. "audi"에서 생산한 자동차 중에 어떤 자동차 모델의 hwy(고속도로 연비)가 
+# 높은지 알아보려고 한다. "audi"에서 생산한 자동차 중 hwy가 1~5위에 해당하는 
+# 자동차의 데이터를 출력하세요.
+df <- filter(mpg, manufacturer=="audi") %>%
+    arrange(desc(hwy)) %>% head()
+df
+#   manufacturer      model displ year cyl      trans drv cty hwy fl   class
+# 1         audi         a4   2.0 2008   4 manual(m6)   f  20  31  p compact
+# 2         audi         a4   2.0 2008   4   auto(av)   f  21  30  p compact
+# 3         audi         a4   1.8 1999   4   auto(l5)   f  18  29  p compact
+# 4         audi         a4   1.8 1999   4 manual(m5)   f  21  29  p compact
+# 5         audi a4 quattro   2.0 2008   4 manual(m6)   4  20  28  p compact
+# 6         audi         a4   3.1 2008   6   auto(av)   f  18  27  p compact
+
+```
+
+
+
+
+
+```R
+# 5. mpg 데이터는 연비를 나타내는 변수가 2개입니다. 
+# 두 변수를 각각 활용하는 대신 하나의 통합 연비 변수를 만들어 사용하려 합니다. 
+# 평균 연비 변수는 두 연비(고속도로와 도시)의 평균을 이용합니다. 
+# 회사별로 "suv" 자동차의 평균 연비를 구한후 내림차순으로 정렬한 후 1~5위까지 데이터를 출력하세요.
+df <- filter(mpg, class=="suv") %>%
+      mutate(MPG=((cty + hwy)/2)) %>%
+      arrange(desc(MPG)) %>% head()
+df
+#                                                                              v
+#   manufacturer        model displ year cyl      trans drv cty hwy fl class  MPG
+# 1       subaru forester awd   2.5 2008   4 manual(m5)   4  20  27  r   suv 23.5
+# 2       subaru forester awd   2.5 2008   4   auto(l4)   4  20  26  r   suv 23.0
+# 3       subaru forester awd   2.5 2008   4 manual(m5)   4  19  25  p   suv 22.0
+# 4       subaru forester awd   2.5 1999   4 manual(m5)   4  18  25  r   suv 21.5
+# 5       subaru forester awd   2.5 1999   4   auto(l4)   4  18  24  r   suv 21.0
+# 6       subaru forester awd   2.5 2008   4   auto(l4)   4  18  23  p   suv 20.5
+
+
+# + 회사별
+df <- filter(mpg, class=="suv") %>%
+      mutate(MPG=((cty+hwy)/2)) %>%
+      group_by(manufacturer) %>% 
+      summarise(AVG_MPG = mean(MPG)) %>%
+      arrange(desc(AVG_MPG)) %>% head(5)
+df
+# A tibble: 5 x 2
+# manufacturer   AVG_MPG
+# <chr>            <dbl>
+# 1 subaru          21.9
+# 2 toyota          16.3
+# 3 nissan          15.9
+# 4 mercury         15.6
+# 5 jeep            15.6
+
+```
+
+
+
+```R
+# 6. mpg 데이터의 class는 "suv", "compact" 등 자동차의 특징에 따라 
+# 일곱 종류로 분류한 변수입니다. 어떤 차종의 도시 연비가 높은지 비교하려 합니다. 
+# class별 cty 평균을 구하고 cty 평균이 높은 순으로 정렬해 출력하세요.
+df <- group_by(mpg, class) %>% 
+      summarise(AVG_CTY = mean(cty)) %>%
+      arrange(desc(AVG_CTY))
+df
+# # A tibble: 7 x 2
+# class        AVG_CTY
+# <chr>          <dbl>
+# 1 subcompact    20.4
+# 2 compact       20.1
+# 3 midsize       18.8
+# 4 minivan       15.8
+# 5 2seater       15.4
+# 6 suv           13.5
+# 7 pickup        13 
+
+```
+
+
+
+```R
+# 7. 어떤 회사 자동차의 hwy(고속도로 연비)가 가장 높은지 알아보려 합니다. 
+# hwy(고속도로 연비) 평균이 가장 높은 회사 세 곳을 출력하세요.
+df <- group_by(mpg, manufacturer) %>%
+      summarise(AVG_HWY = mean(hwy)) %>%
+      arrange(desc(AVG_HWY)) %>% head(3)
+df
+# # A tibble: 3 x 2
+# manufacturer   AVG_HWY
+# <chr>            <dbl>
+# 1 honda           32.6
+# 2 volkswagen      29.2
+# 3 hyundai         26.9
+
+```
+
+
+
+```R
+# 8. 어떤 회사에서 "compact" 차종을 가장 많이 생산하는지 알아보려고 합니다. 
+# 각 회사별 "compact" 차종 수를 내림차순으로 정렬해 출력하세요.
+df <- filter(mpg, class=="compact") %>%
+      group_by(manufacturer) %>%
+      summarise(compact = n()) %>%
+      arrange(desc(compact))
+df
+# # A tibble: 5 x 2
+# manufacturer   compact
+# <chr>            <int>
+# 1 audi              15
+# 2 volkswagen        14
+# 3 toyota            12
+# 4 subaru             4
+# 5 nissan             2  
+
+```
 
