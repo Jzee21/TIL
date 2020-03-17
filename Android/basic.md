@@ -47,9 +47,9 @@
 
 #### 버전
 
-> .....
+> (생략)
 >
-> 8(오레오)	보안정책이 확 바뀌는 기점
+> 8(오레오)	[보안정책이 확 바뀌는 기점]
 >
 > 9(파이)
 >
@@ -57,7 +57,7 @@
 
 
 
-#### 시장성
+#### 대중성
 
 > Android가 빠르게 시장점유율을 높일 수 있었던 이유
 >
@@ -70,7 +70,7 @@
 
 > Android는 Framwork이다.
 >
-> `!`  Library vs Framework
+> `!`  `Library vs Framework`
 >
 > - Library는 특정 기능을 쉽고 편하게 구현할 수 있다.
 >   - 시스템 구성은 개발자가 설계
@@ -281,13 +281,13 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 >
 > ```xml
 > <activity android:name=".MainActivity">
->                  <!--    class name    -->
+>                  	<!--    class name    -->
 > 	<intent-filter>
 > 		<action android:name="android.intent.action.MAIN" />
 > 
 > 		<category android:name=
 >                   "android.intent.category.LAUNCHER" />
->                                    <!--  App ot load   -->
+>                                   <!--  앱의 첫 Activity  -->
 > 	</intent-filter>
 > </activity>
 > ```
