@@ -244,7 +244,7 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
   >
   > Package Name  :  다른 앱과 구분되는 기준
   >
-  > 			- unique한 값을 사용해야 하며, 주로 도메인의 역순으로 많이 사용한다.
+  > ​		- unique한 값을 사용해야 하며, 주로 도메인의 역순으로 많이 사용한다.
   >
   > Language  :  Java   (default  :  Kotlin)
   >
@@ -252,7 +252,6 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 
 - ![image-20200317114859144](Image/image-20200317114859144.png)
 
-- > `!`  Gradle
 
 
 
@@ -265,6 +264,8 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 > Spring의 Maven과 같은 역할
 
 ![image-20200317115216358](Image/image-20200317115216358.png)
+
+`File View Type`
 
 ![image-20200317115510369](Image/image-20200317115510369.png)
 
@@ -280,13 +281,13 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 >
 > ```xml
 > <activity android:name=".MainActivity">
->     <!--                 class name                      -->
+>                  <!--    class name    -->
 > 	<intent-filter>
 > 		<action android:name="android.intent.action.MAIN" />
 > 
 > 		<category android:name=
 >                   "android.intent.category.LAUNCHER" />
->     <!--                                   App ot load	 -->
+>                                    <!--  App ot load   -->
 > 	</intent-filter>
 > </activity>
 > ```
@@ -389,3 +390,7 @@ View Group  :  View의 크기와 위치를 조절해서 설정한다.
 14.  사용하고 있는 activity를 종료하게되면 killed 상태로 진입
 15.  진입하기 전에 onDestory() method가 callback된다
     - 사용한 리소스 초기화, 반납
+
+
+
+![img](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile26.uf.tistory.com%2Fimage%2F2042E5504FD938C9289E88)
