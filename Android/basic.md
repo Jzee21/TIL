@@ -1,17 +1,15 @@
 # Android
 
-> 목표
->
-> - Component들의 동장방식에 대한 이해
->
-> - Android Framework의 동작원리
+## 목표
 
-> Android 주요 컴포넌트
->
-> 1. Activity
-> 2. Service
-> 3. Broadcast Receiver
-> 4. Content Provider
+- Component들의 동장방식에 대한 이해
+  - Android 주요 컴포넌트
+    1. Activity
+    2. Service
+    3. Broadcast Receiver
+    4. Content Provider
+
+- Android Framework의 동작원리
 
 
 
@@ -21,67 +19,96 @@
 
 
 
-### 구성
+### Android의 구성
 
-> 다양한 모듈이 레이어를 갖고 계층별 소프트웨어 스택으로 구성되어있다.
+> OS(Linux Kernel) + 미들웨어 + 핵심 어플리케이션(전화, 카메라, 메시지 등)과 같은 것들이 포함되어 있는 모바일 디바이스를 위한 소프트웨어 스택
 >
 > ![img](http://www.epnc.co.kr/news/photo/200908/44850_40800_1.jpg)
 >
-> - OS(Linux Kernel)
-> - Middleware
->   - Library, Android Runtime
-> - Application Framework
-> - Application
 
-### 특징
+- OS(Linux Kernel)
+- Middleware
+  - Library, Android Runtime
+- Application Framework
+- Application
 
-> 오픈소스
+
+
+### Android의 특징
+
+- 오픈소스
+
+- 개발언어 - Java, Kotlin
+
+- 앱간의 연동이 자유롭다.  
+
+- JDK  :  Dalvik  >>  ART (Android Runtime)
+
+
+
+#### Android 역사
+
+- 2005년 구글이 Android 사를 인수
+- 2007년 안드로이드 발표
+- 2008년 오픈소스 공개
+- 2014년 안드로이드 5.0 공개
+  - ART(Android Runtime) 탑재
+- 2019년 9월 안드로이드 10(Q) 공개
+
+
+
+#### Android 버전
+
+> Android는 버전 이름을 알파벳 순서로 붙여왔다.
 >
-> 개발언어 - Java, Kotlin
->
-> 앱간의 연동이 자유롭다.  
->
-> JDK  :  Dalvik  >>  ART (Android Runtime)
+> 1.5 버전부터 디저트명을 별명으로 붙여왔으며 10 버전부터는 디저트명을 사용하지 않는다.
+
+- 주요 버전
+  - (앞 생략)
+  - N (7.0)  -  Nougat
+    - 파일 기반 암호화 지원
+  - O (8.0)  -  Oreo
+    - 화면 잠금과 관련된 보안정책 변경
+  - P (9.0)  -  Pie
+    - 볼륨 버튼을 누르면 먼저 미디어 볼륨을 조정함
+  - Q (10.0)
+    - 어두운 테마 지원
+    - 스와이프 제스처 지원(IOS와 유사)
 
 
 
-#### 버전
-
-> (생략)
->
-> 8(오레오)	[보안정책이 확 바뀌는 기점]
->
-> 9(파이)
->
-> 10(Q)
-
-
-
-#### 대중성
+#### 성장 배경
 
 > Android가 빠르게 시장점유율을 높일 수 있었던 이유
->
-> - 오픈소스
-> - Eco System이 잘 되어있다.
+
+- 오픈소스
+
+- Eco System이 잘 되어있다.
+
+  - 단말기 제조사, 이동통신사, 어플리케이션 개발자 등
+
+    안드로이드의 성장에 참여하는 범위가 넓음
 
 
 
 #### Framework
 
 > Android는 Framwork이다.
->
-> `!`  `Library vs Framework`
->
-> - Library는 특정 기능을 쉽고 편하게 구현할 수 있다.
->   - 시스템 구성은 개발자가 설계
->   - 유지보수가 힘들다
-> - Framework는 동작 방식이 정해져있다.
->   - Framework을 이해해야 개발이 가능하다.
->   - 유지보수가 쉽다
+
+`!`  `Library vs Framework`
+
+- Library는 특정 기능을 쉽고 편하게 구현할 수 있다.
+  - 시스템 구성은 개발자가 설계
+  - 유지보수가 힘들다
+- Framework는 동작 방식이 정해져있다.
+  - Framework을 이해해야 개발이 가능하다.
+  - 유지보수가 쉽다
 
 
 
 ### Android Component
+
+> Android를 구성하는 4가지 주요 Component
 
 #### 1. Activity
 
@@ -127,27 +154,34 @@
 
 ### Android Studio 설치
 
-[Android Developers](https://developer.android.com/) 에서 설치
+- [Android Developers](https://developer.android.com/) - [Download Android Studio](https://developer.android.com/studio)
 
-`android-studio-ide-192.6241897-windows.exe` 실행
-
-Virtual Device 선택 (default) (가상 디바이스 사용 여부)
-
-- ![image-20200317103035038](Image/image-20200317103035038.png)
+- `android-studio-ide-192.6241897-windows.exe` 실행
+  1. Next
+  2. Android Virtual Device 체크 확인
+     - AVD(Android Virtual Device) 사용 여부를 확인한다
+     - Default  :  checked
+     - ![image-20200317103035038](Image/image-20200317103035038.png)
+     - 설치경로 지정
+     - install
 
 
 
 > `!`  Android Studio를 삭제할 때,
 >
-> 제어판에서 삭제를 한 후에 설치폴더, 환경설정이 남아있는 경우가 있다.
+> 제어판에서 삭제를 한 후에 설치폴더, 환경설정이 남아있는 경우
+>
+> 해당 설정과 경로를 수동으로 삭제해야한다.
 
 
 
 ### Android Studio 설정
 
 - 최초 실행 시 기존의 설정을 적용할지 묻는다.
-
-  (백업본이 있다면 적용)
+- Config of installation folder
+  - 기존에 사용하던 Android Studio의 설정양식을 적용한다.
+  - Do not import settings
+    - 기본값으로 설정한다.
 
 ![image-20200317103218700](Image/image-20200317103218700.png)
 
@@ -159,7 +193,7 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 
 - ![image-20200317103732586](Image/image-20200317103732586.png)
 
-  > UI등 설정을 진행할지 여부
+  > UI등의 사용자 정의 설정을 진행할지 여부
   >
   > Standard  -  Next
 
@@ -177,9 +211,11 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 
 - ![image-20200317103832801](Image/image-20200317103832801.png)
 
-  > ing.....
+  > Android 10 installing.....
 
 - ![image-20200317110223562](Image/image-20200317110223562.png)
+
+  > 설치 완료
 
 
 
@@ -188,13 +224,17 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 
 - ![image-20200317110329025](Image/image-20200317110329025.png)
 
+  > 설치가 완료된 화면
+  >
+  > `Configure` - `SDK Manager`
+
 - ![image-20200317110420111](Image/image-20200317110420111.png)
 
-  > `Android 9.0 (Pie)`, `Android 8.0 (Oreo)` 선택
+  > `Android 9.0 (Pie)`, `Android 8.0 (Oreo)` 선택 (추가 설치)
 
 - ![image-20200317110526730](Image/image-20200317110526730.png)
 
-  > 상단 `SDK Tools` - `Google Play service` 선택
+  > 상단 탭 `SDK Tools` - `Google Play service` 선택 (추가 설치)
   >
   > `Apply`
 
@@ -204,6 +244,10 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
   
 - ![image-20200317112111350](Image/image-20200317112111350.png)
 
+  > Android 8, Android 9, 각 버전의 SDK 설치
+
+
+
 
 
 #### AVD Manager
@@ -212,12 +256,16 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 
 - ![image-20200317110903646](Image/image-20200317110903646.png)
 
+  > Create Virtual Device
+
 - ![image-20200317112147961](Image/image-20200317112147961.png)
 
   > Nexus 5 선택
 
 - ![image-20200317112250585](Image/image-20200317112250585.png)
 
+  > 해당 기기와 버전에 맞는 이미지 설치
+  >
   > `Pie Download`
 
 - ![image-20200317112317082](Image/image-20200317112317082.png)
@@ -226,7 +274,11 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 
 - ![image-20200317112744121](Image/image-20200317112744121.png)
 
+  > AVD 세부 설정
+
 - ![image-20200317112749295](Image/image-20200317112749295.png)
+
+  > 설치된 AVD들의 리스트
 
 
 
@@ -237,6 +289,8 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 - ![image-20200317113718244](Image/image-20200317113718244.png)
 
 - ![image-20200317113724589](Image/image-20200317113724589.png)
+
+  > 다양한 종류의 Activity 양식을 기본으로 제공한다.
 
 - ![image-20200317114836131](Image/image-20200317114836131.png)
 
@@ -265,15 +319,27 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 
 ![image-20200317115216358](Image/image-20200317115216358.png)
 
-`File View Type`
 
-![image-20200317115510369](Image/image-20200317115510369.png)
 
-![image-20200317115529476](Image/image-20200317115529476.png)
+#### File View Type
 
-![image-20200317115553049](Image/image-20200317115553049.png)
+- Project
+
+  ![image-20200317115510369](Image/image-20200317115510369.png)
+
+- Package
+
+  ![image-20200317115529476](Image/image-20200317115529476.png)
+
+- Android
+
+  ![image-20200317115553049](Image/image-20200317115553049.png)
 
 > Project View는 `Android`를 기본으로 하며, 설정 파일은 `Project`를 통해 확인한다.
+
+
+
+#### AndroidManifest.xml
 
 ![image-20200317130256603](Image/image-20200317130256603.png)
 
@@ -287,14 +353,14 @@ Virtual Device 선택 (default) (가상 디바이스 사용 여부)
 > 
 > 		<category android:name=
 >                   "android.intent.category.LAUNCHER" />
->                                   <!--  앱의 첫 Activity  -->
+>                           <!--  앱 실행시 보이는 첫 Activity  -->
 > 	</intent-filter>
 > </activity>
 > ```
 
 
 
-`MainActivity.java`
+#### MainActivity.java
 
 ```java
 package com.example.myfirstapp;
@@ -318,9 +384,11 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+> 주로 Activity에 대한 로직을 담당한다.
 
 
-`Activity의 화면을 구성하는 방식`
+
+#### Activity의 화면을 구성하는 방식
 
 1. Java Code로 Widget Component를 생성해서 화면에 붙이는 방식
 2. XML 파일을 이용해서 화면구성을 처리
@@ -328,7 +396,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-`res 폴더`
+#### res
 
 1. drawable  : application 에서 사용하는 그림 파일 저장
 2. layout    : Activity에서 사용할 화면구성을 위한 xml 파일 저장
@@ -338,9 +406,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-### Debuging
+#### Debuging
 
 `Logcat`
 
@@ -348,11 +414,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-###  XML
+####  activity_main.xml
 
 ![image-20200317141353161](Image/image-20200317141353161.png)
 
 ![image-20200317141512789](Image/image-20200317141512789.png)
+
+> `MainActivity.java`에서는 화면의 구동에 대한 로직을 주로 담당한다면
+>
+> `activity_main.xml`에서는 화면의 구성요소들의 위치 등의 UI를 담당한다
 
 
 
@@ -368,29 +438,3 @@ View Group  :  View의 크기와 위치를 조절해서 설정한다.
 
 
 
-## Activity Life Cycle
-
-> activity는 사용자에 의해서 이벤트가 발생되면 그 상태가 변한다.
->
-> 그에 따라 callback method가 호출되는데 그 callback method에 대해 알아야한다.
-
-1.  Activity는 class 상태로 존재
-2.  Activity가 화면에 나타나려면 객체화가 되어야 한다.(instance화)
-3.  onCreate() method가 callback된다. >> 화면구성을 주로 한다.
-4.  onStart() method가 callback된다.  >> Activity의 초기화 작업을 한다.
-5.  Activity가 foreground로 나타나면서 사용자와 interaction이 가능
-6.  onResume() method가 callback된다.
-7.  Activity가 running 상태가 된다
-8.  Activity의 일부분이 보이지 않는 상태(Pause 상태)
-9.  Pause 상태가 되면 onPause() method가 callback된다
-10.  Activity의 전체가 완전히 가려져서 보이지 않는 상태가 된다(Stop 상태)
-11.  Stop 상태가 되면 onStop() method가 callback된다
-12.  만약 Stop 상태에서 다시 Running 상태가 되면
-13.  onRestart() -> onStart() -> onResume() 순서로 다시 호출
-14.  사용하고 있는 activity를 종료하게되면 killed 상태로 진입
-15.  진입하기 전에 onDestory() method가 callback된다
-    - 사용한 리소스 초기화, 반납
-
-
-
-![img](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile26.uf.tistory.com%2Fimage%2F2042E5504FD938C9289E88)
