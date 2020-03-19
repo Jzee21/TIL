@@ -282,7 +282,7 @@
 
 
 
-## Project
+## Android Studio Project
 
 ### 생성
 
@@ -321,7 +321,11 @@
 
 
 
-#### File View Type
+#### Directory View
+
+> 여러가지 방식으로 프로젝트를 구성하는 파일들을 볼 수 있다.
+>
+> 주로 쓰이는 방식 3가지
 
 - Project
 
@@ -341,9 +345,11 @@
 
 #### AndroidManifest.xml
 
+`app  -  mainfests  -  AndroidMainfest.xml`
+
 ![image-20200317130256603](Image/image-20200317130256603.png)
 
-> App과 프로젝트 전반에 대한 정보
+> App과 프로젝트 전반에 대한 정보를 갖고있다.
 >
 > ```xml
 > <activity android:name=".MainActivity">
@@ -388,14 +394,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-#### Activity의 화면을 구성하는 방식
-
-1. Java Code로 Widget Component를 생성해서 화면에 붙이는 방식
-2. XML 파일을 이용해서 화면구성을 처리
-   - xml을 이용하는 방식은 표현(화면구성-UI)과 구현(로직)을 분리
-
-
-
 #### res
 
 1. drawable  : application 에서 사용하는 그림 파일 저장
@@ -406,11 +404,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-#### Debuging
+#### Logcat
 
-`Logcat`
+> Android System에서 발생하는 Log들을 이용해
+>
+> 현재 구동중인 Android의 상태를 확인할 수 있다.
 
 ![image-20200317141034398](Image/image-20200317141034398.png)
+
+- IDE의 하단에 `Logcat` 탭이 존재하며, 다양한 필터를 이용해 원하는 Log만 확인할 수 있다.
+- `Log.i()`
+  - tag와 msg로 구성되어 Log를 생성한다.
+  - Android App 개발 시 App의 동작 사이에 두어 Debuging에 활용할 수 있겠다.
 
 
 
@@ -425,16 +430,6 @@ public class MainActivity extends AppCompatActivity {
 > `activity_main.xml`에서는 화면의 구성요소들의 위치 등의 UI를 담당한다
 
 
-
-### View와 View Group
-
-View  :  통상적으로 눈에 보이는 Component
-
-	- Button, TextView(lable), ImageView(그림), ...
-
-View Group  :  View의 크기와 위치를 조절해서 설정한다.
-
-- 대표적인 녀석이 Layout
 
 
 
