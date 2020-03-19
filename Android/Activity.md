@@ -213,6 +213,24 @@
 
       `center_vertical`를 사용할 경우 `RtlCompat`를 필요로 한다.
 
+- Image View
+
+  - `android:src="@drawable/{file_name}"`
+
+    - 경로를 이용하여 Image를 출력한다.
+
+    - `res > drawable` 경로에 Image를 등록할 경우
+
+      `@drawable/{file_name}` 형태의 id로 사용이 가능하다
+
+  - 주의 !
+
+    - res > drawable 경로에서 id는 `file_name`으로만 지정되기 때문에
+
+      같은 이름의 다른 확장자 파일은 문제가 발생한다
+
+    - 예 )  cat1.jpg ,  cat1.png
+
 - (생략)
 
 
