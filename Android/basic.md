@@ -394,6 +394,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+####  activity_main.xml
+
+![image-20200317141353161](Image/image-20200317141353161.png)
+
+![image-20200317141512789](Image/image-20200317141512789.png)
+
+> `MainActivity.java`에서는 화면의 구동에 대한 로직을 주로 담당한다면
+>
+> `activity_main.xml`에서는 화면의 구성요소들의 위치 등의 UI를 담당한다
+
+
+
 #### res
 
 1. drawable  : application 에서 사용하는 그림 파일 저장
@@ -416,20 +428,4 @@ public class MainActivity extends AppCompatActivity {
 - `Log.i()`
   - tag와 msg로 구성되어 Log를 생성한다.
   - Android App 개발 시 App의 동작 사이에 두어 Debuging에 활용할 수 있겠다.
-
-
-
-####  activity_main.xml
-
-![image-20200317141353161](Image/image-20200317141353161.png)
-
-![image-20200317141512789](Image/image-20200317141512789.png)
-
-> `MainActivity.java`에서는 화면의 구동에 대한 로직을 주로 담당한다면
->
-> `activity_main.xml`에서는 화면의 구성요소들의 위치 등의 UI를 담당한다
-
-
-
-
 
