@@ -1,8 +1,6 @@
 # Event
 
-
-
-
+---
 
 ## Event란?
 
@@ -10,54 +8,80 @@
 
 
 
-
+---
 
 ## Event 처리
-
-
 
 ### Event Handling 
 
 >  Java  -  `Event Delegation Model`을 이용해 Event 처리
 
-Event 처리와 관련된 3가지 객체
 
-1. Event Source 객체
+
+### Event 처리 객체
+
+> Event의 처리와 관련된 객체 3가지를 소개한다.
+
+1. Event Source
    - Event가 발생한 객체를 지칭
-2. Event Handler 객체(Listener)
+2. Event Handler (Listener)
    - Event를 처리하는 객체
-3. Event 객체
+3. Event
    - 발생된 Event에 대한 세부정보를 가진 객체
 
-> Event Source는 이미 생성됨, Event 객체는 자동적으로 생성
->
-> Event Source에 Event Handler를 부착시켜
->
-> Event가 발생되면 부착된 Handler를 통해 Event를 처리
+- Event Source는 이미 생성됨, Event 객체는 자동적으로 생성
+
+  Event Source에 Event Handler를 부착시켜
+
+  Event가 발생되면 부착된 Handler를 통해 Event를 처리한다
+
+  
+
+#### 1. Event Source 생성
+
+1. Button에 ID지정
+
+   - Avtivity의 xml 파일에서 해당 Component에 id를 지정한다.
+
+   - ```xml
+     android:id="@+id/eventBtn"
+     ```
+
+   - `"@+id/{_ID_}"`를 이용하여 `id의 목록`에 `__ID__`를 추가한다.
+
+   
+
+2. Activity에서 ID를 이용해 객체 생성
+
+   - Java에서 Component들은 `android.widget` 패키지에 속한다.
+     - 예 ) `android.widget.Button`
+   - `findViewById()`를 이용해 component를 찾아 지정한다.
+     - id의 목록은 `R.id`를 이용해 접근한다.
+     - `findViewById()`의 return값은 Object객체이다.
+
+   ```java
+   Button myBtn = (Button) findViewById(R.id.eventBtn);
+   TextView tv = (TextView) findViewById(R.id.myTv);
+   ```
 
 
+
+#### 2. Event Handler (Other Class) 생성
+
+> Handler 기능만을 위한 별도의 외부 클래스를 사용하는 방법
 
 ```java
 public class ButtonActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_button);
-
-        // 1. Event Source instance
-        Button myBtn = (Button) findViewById(R.id.eventBtn);
-        TextView tv = (TextView) findViewById(R.id.myTv);
-        // 2. Event Handler instance - create
+        // ....
+        // Handler class 생성
         MyEventHandler handler = new MyEventHandler(tv);
-        // 3. Event Source에 Event Handler 부착
-        myBtn.setOnClickListener(handler);
-
+        // ....
     }
 }
-```
 
-```java
 class MyEventHandler implements View.OnClickListener {
 
     private TextView tv;
@@ -76,21 +100,42 @@ class MyEventHandler implements View.OnClickListener {
 }
 ```
 
-> 여기서 필요한 것은 일반 클래스의 객체가 아닌
->
-> 이벤트를 처리할 수 있는 특수한 능력을 가지고 있는 리스너 객체가 필요
->
-> (즉, 특수한 interface를 구현한 클래스여야 한다)
->
-> (특수한 interface는 여러개가 존재한다)(Event 종류에 따라서)
+- 일반적인 객체가 아닌, 
+
+  Event를 처리할 수 있는 interface를 상속한 Listener 객체가 필요
+
+  - `View.OnClickListener` interface를 상속한다
+
+  - `implements View.OnClickListener`
+
+- interface의 추상메서드 `onClick()`을 Override 한다.
+
+- interface는 Event의 종류에 따라 다양하게 존재한다.
+
+
+
+#### 3. Event Source에 Event Handler 연결
+
+```java
+public class ButtonActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+		// .....
+        myBtn.setOnClickListener(handler);
+    }
+}
+```
+
+
+
+
+
+#### 4. anonymous inner class
 
 > **실제 구현에서는 anonymous inner class(익명 이너클래스)를 이용하기 때문에**
 >
 > **위와 같은 외부 class는 사용하지 않는다.**
-
-
-
-`anonymous inner class`
 
 ```java
 public class ButtonActivity extends AppCompatActivity {
@@ -104,16 +149,16 @@ public class ButtonActivity extends AppCompatActivity {
         Button myBtn = (Button) findViewById(R.id.eventBtn);
         final TextView tv = (TextView) findViewById(R.id.myTv);
         // 상수화 시켜 heap 영역에 존재하도록 하여
-        // onCreate()가 종료되어도 변수가 존대하도록 한다.(생존시간 증가)
+        // onCreate()가 종료되어도 변수가 존재하도록 한다.(생존시간 증가)
 
         // 2+3. Event Source에 Event Handler 객체를 생성헤서 부착
+        // anonymous inner class
         myBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tv.setText("Clicked");
             }
         });
-
     }
 }
 ```
