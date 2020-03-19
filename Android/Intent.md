@@ -85,7 +85,6 @@
 - `MainActivity.java`
 
   - id를 등록한 버튼에 Handler를 등록한다.
-  - 
 
 ```java
 Button _01_linearlayoutBtn =
@@ -100,6 +99,41 @@ _01_linearlayoutBtn.setOnClickListener(new View.OnClickListener() {
 
 
 
-		- d
-		- 
+- Intent 객체 생성
+  - Target Activity를 찾아 지정하기 위해서 Intent 객체를 사용한다.
+
+```java
+@Override
+public void onClick(View v) {
+	Intent i = new Intent();
+}
+```
+
+
+
+- Intent 객체 설정
+
+  - ComponentName 객체를 이용해 이동할 Activity를 지정한다
+
+    - 매개변수는 2개이며
+
+    - 첫번째 매개변수는 이동할 Activity가 포함된 Package 경로
+
+    - 두번째 매개변수는 이동할 Activity의 Class 이름
+
+      (Class 이름은 Package의 경로를 포함한다.)
+
+  - ComponentName 객체를 Intent 객체에 연결한다.
+
+  - Intent 객체를 이용해 새로운 Activity를 호출한다.
+
+```java
+ComponentName cname = 
+    new ComponentName("com.example.androidlectureexample",
+ 	"com.example.androidlectureexample.Example01_LayoutActivity");
+i.setComponent(cname);
+startActivity(i);
+```
+
+
 
