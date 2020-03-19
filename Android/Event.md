@@ -163,3 +163,93 @@ public class ButtonActivity extends AppCompatActivity {
 }
 ```
 
+
+
+
+
+## Click Event
+
+> `View.OnClickListener()`
+>
+> Button의 onClick() method를 이용해 Image View의 이미지를 변경한다.
+
+- xml을 이용해 component들을 지정
+
+  ```xml
+  <ImageView
+  	android:id="@+id/iv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:adjustViewBounds="true"
+      android:scaleType="fitCenter"
+      android:src="@drawable/yuna"/>
+  
+  <Button
+      android:id="@+id/imageChangeBtn"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="이미지 변경"/>
+  ```
+
+  - id를 반드시 지정해두자
+
+  
+
+- id를 이용한 component의 instance화
+
+  ```java
+  public class Example03_EventActivity .... {
+      private ImageView iv;
+      
+      protected void onCreate(Bundle savedInstanceState) {
+          iv = (ImageView) findViewById(R.id.iv);
+          Button btn = 
+              (Button) findViewById(R.id.imageChangeBtn);
+      }
+  }
+  ```
+
+  
+
+- Button을 Click 했을 때 작동하도록 Handler 생성, 부착
+
+  ```java
+  btn.setOnClickListener(new View.OnClickListener() {
+  	@Override
+      public void onClick(View v) {
+          // Image View에 표시될 file의 id 지정
+      	iv.setImageResource(R.drawable.iu_love_poem);
+      }
+  });
+  ```
+
+  
+
+
+
+## Touch Event
+
+> `onTouchEvent()` 또는 `View.OnTouchListener()`
+
+### Touch Event
+
+> Activity에서 제공하는 `onTouchEvent(MotionEvent event)`를 이용하여 Touch Event를 처리한다
+>
+> Layout을 터치했을 때, Toast 메세지를 출력한다.
+
+- xml에서 Layout에 id를 등록한다.
+
+
+
+
+
+### Swipe Event
+
+> `View.OnTouchListener()` Interface의 
+>
+> `onTouch(View v, MotionEvent event)` 를 이용하여 Event 처리
+
+
+
+
+
