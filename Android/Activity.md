@@ -231,6 +231,27 @@
 
     - 예 )  cat1.jpg ,  cat1.png
 
+- Spinner
+
+  - Activity.java에서 xml의 id를 이용해 항목을 추가할 수 있다
+  - List 객체를 이용해 항목들을 저장한다
+  - Adapter 객체를 이용해 Spinner 객체에 항목들을 연결한다
+
+  ```java
+  Spinner spinner = (Spinner) findViewById(R.id.mySpinner);
+  final ArrayList<String> list = new ArrayList<String>();
+  list.add("포도");
+  list.add("딸기");
+  list.add("바나나");
+  list.add("사과");
+  
+  ArrayAdapter adapter = new 
+      ArrayAdapter(
+      	getApplicationContext(),
+          android.R.layout.simple_spinner_dropdown_item, list);
+  spinner.setAdapter(adapter);
+  ```
+
 - (생략)
 
 
