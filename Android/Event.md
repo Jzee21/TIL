@@ -235,21 +235,154 @@ public class ButtonActivity extends AppCompatActivity {
 
 > Activity에서 제공하는 `onTouchEvent(MotionEvent event)`를 이용하여 Touch Event를 처리한다
 >
-> Layout을 터치했을 때, Toast 메세지를 출력한다.
+> 화면을 터치했을 때, Toast 메세지를 출력한다.
 
-- xml에서 Layout에 id를 등록한다.
+- Activity에서 Touch Event를 인식할 수 있도록
 
+  `onTouchEvent()를 Override` 한다.
 
+  ```java
+  public class Example04 extends AppCompatActivity {
+  
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          // ...
+      }
+  
+      @Override
+      public boolean onTouchEvent(MotionEvent event) {
+          // ...
+          return super.onTouchEvent(event);
+      }
+  
+  }
+  ```
+
+  > Touch Event는 화면에 손이 닿을때, 떨어질때 모두 발생한다
+
+- Toast Message를 사용하기 위해 makeText()를 사용한다.
+
+  ```java
+  @Override
+      public boolean onTouchEvent(MotionEvent event) {
+          // Toast Event
+          Toast.makeText(this, 
+                         "message", 
+                         Toast.LENGTH_SHORT).show();
+  
+          return super.onTouchEvent(event);
+      }
+  ```
+
+  - Toast.makeText(...).show()
+
+    - Toast.makeText()를 이용해 Toast Message를 생성하고
+
+      show() method를 이용해 화면에 표시한다
+
+  - Toast.makeText(Context, text, duration)
+
+    - Context  (Interface)
+
+      Activity는 Context를 상속하기 때문에
+
+      현재 Activity에 Toast 메세지를 띄우기 위해 this를 사용할 수 있다.
+
+    - text
+
+      Toast 메세지에 띄울 텍스트를 문자열로 입력한다.
+
+    - duration
+
+      Toast 메세지가 보여지는 시간을 지정한다
 
 
 
 ### Swipe Event
 
-> `View.OnTouchListener()` Interface의 
+> Touch Event는 디스플레이에 손가락이 닿을 때, 디스플레이 위에서 움직일 때, 디스플레이에서 손가락을 땔 때 각각 발생한다.
 >
-> `onTouch(View v, MotionEvent event)` 를 이용하여 Event 처리
+> 이를 이용해서 손가락이 닿을 때의 x 좌표와 손가락이 떨어질 때의 x 좌표를 비교해
+>
+> Swipe로 인식하도록 한다.
 
+> 이전 예제는 Activity에서 Touch Event를 인식했다.
+>
+> 이번에는 Layout에서 Touch Event를 Handling 하여 Event를 처리한다.
 
+- xml에서 Layout에 Id 설정
+
+  ```xml
+  <LinearLayout 
+      .....
+      android:id="@+id/myLayout">
+  ```
+
+- id를 이용해 Layout 객체 생성, Handler 설정
+
+  ```java
+  private double x1, x2;
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_example05_swipe);
+  
+      ll = (LinearLayout) findViewById(R.id.myLinearlayout);
+      ll.setOnTouchListener(new View.OnTouchListener() {
+          @Override
+          public boolean onTouch(View v, MotionEvent event) {
+              return false;
+          }
+      });
+  
+  }
+  ```
+
+- Touch Event를 구분하여 Swipe 로 인식
+
+  ```java
+  @Override
+  public boolean onTouch(View v, MotionEvent event) {
+      String msg = "";
+      if(event.getAction() == MotionEvent.ACTION_DOWN) {
+          x1 = event.getX();
+      }
+      if (event.getAction() == MotionEvent.ACTION_UP) {
+          x2 = event.getX();
+          if (x1 > x2) {
+              msg = "Left Swipe";
+          } else {
+              msg = "Right Swipe";
+          }
+          Toast.makeText(Example05_SwipeActivity.this,
+                         msg, Toast.LENGTH_SHORT).show();
+      }
+  
+      return true;
+  }
+  ```
+
+  - `MotionEvent.getAction()` 메서드를 이용해 event를 구분할 수 있다
+
+    각 이벤트는 상수화 되어 MotionEvent에 포함되어있다
+
+    ```java
+    MotionEvent.ACTION_DOWN
+    MotionEvent.ACTION_UP
+    ```
+
+  - `MotionEvent.getX()` 메서드를 이용해 event가 발생한 x 좌표를 구할 수 있다.
+
+    - `getX()`, `getY()` 등의 메서드의 반환형은 `Double`형이다.
+
+  - `getAction()` 메서드를 이용해 event를 구분하고, 
+
+    각 event의 x좌표를 `getX()` 메서드를 이용해 저장한다.
+
+  - Swipe 가 종료되는 `MotionEvent.ACTION_UP` 상태에서 event의 x좌표를 비교하여 Swipe의 방향을 결정한다.
+
+  - Swipe 방향을 Toast 메세지로 출력한다.
 
 
 
