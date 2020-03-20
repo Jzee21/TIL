@@ -295,3 +295,24 @@
 
 
 
+
+
+## ANR
+
+> ANR : Application Not Responding
+>
+> 어플리케이션의 비정상 종료
+
+- Activity의 최우선 작업은 사용자와의 interaction!
+
+- Application은 Activity에서 일정 시간 이상 사용자와의 interaction이 중단되면 Application을 비정장 종료할 수 있다.
+
+  따라서 개발자는 이러한 경우를 반드시 피해야 한다
+
+- 이를 위해 Activity에서는 시간이 오래 걸리는 작업을 하면 안된다.
+
+  `시간이 오래 걸리는 작업`
+
+  - DB 접속 및 사용
+  - 대용량 file 처리
+  - 기타....
