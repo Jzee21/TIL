@@ -257,6 +257,11 @@
   - `style` 항목을 이용하여 ProgressBar의 방향과 모양을 지정할 수 있다
   - `android:progress` 항목을 이용하여 ProgressBar의 진행상황을 설정할 수 있다.
     - 최소 0 ~ 최대 100 의 값을 지정할 수 있다
+  - `setProgress(int)` 메서드를 이용해 Activity에서 진행상황을 변경할 수 있다.
+
+- ListView
+
+  - Spinner와 같이 Activity에서 항목을 지정할 수 있다
 
 - (생략)
 
