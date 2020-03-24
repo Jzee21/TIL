@@ -429,3 +429,58 @@ public class MainActivity extends AppCompatActivity {
   - tag와 msg로 구성되어 Log를 생성한다.
   - Android App 개발 시 App의 동작 사이에 두어 Debuging에 활용할 수 있겠다.
 
+
+
+## 예제
+
+> 도서검색 Web Application & Android App 구현
+
+1. 사용할 Database부터 확인한다
+
+   - 사용 DBMS  :  MySQL
+   - 구축된 Database  :  library라는 이름의 database
+   - library Database  :  Book Table
+   - Book Table  :  column, primary key, data type 등...
+
+    
+
+2. 도서검색 Web Application 구현 (Simple Ver.)
+
+   - 일반적인 Web Application으로 작성
+   - 사용 WAS  :  Tomcat 7.0
+   - 개발 IDE  :  Eclipse
+
+    
+
+   1. Dynamic Web Project  -  BookSearchForAndroid
+   2. Context Root  :  Web 상에서 프로젝트를 지칭하기 위해 사용되는 논리적인 이름*  -  bookSearch
+   3. MVC Pattern으로 구현  -  Servlet 사용 (Controller)
+
+    
+
+   - BookTitleSearchServler
+
+     - package  :  com.text
+
+     - url mapping  :  /searchTitle
+
+       > 클라이언트가 웹에서 지칭하기 위해 사용하는 논리적인 이름
+
+   > Servlet을 Web에서 호출하는 방식은 크게 2가지 (세부 6가지)
+   >
+   > - GET, POST
+
+   > Post 방식
+   >
+   > - protocol의 head 안에 데이터가 포함되어 전달
+   > - 전달하는 데이터의 크기에 제한이 없다
+   > - 보안성이 상대적으로(Get 대비) 있다
+
+3. Transaction
+
+   > Transaction은 일의 최소 단위로서
+   >
+   > Transaction을 설정하면 DBMS에서 ACID를 보장받을 수 있다
+   >
+   > - ACID ( Atomicity, Consistency, Isolation, Durability )
+   > - Atomicity : all or nothing
