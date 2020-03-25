@@ -79,9 +79,12 @@
 
      Override 하면서 Handler를 생성한다.
 
-    
 
-2. Runnable class 작성
+
+
+### Runnable
+
+1. Runnable class 작성
 
    ```java
    class BookSearchRunnable implements Runnable {
@@ -192,7 +195,7 @@
    >
    > 이는 Application의 보안 설정으로 특정 기능에 대한 권한 등록이 필요하다
    >
-   > [Android 권한 설정]
+   > [Android 권한 설정](https://github.com/Jzee21/TIL/blob/master/Android/Allow_permission.md)
 
 
 
@@ -236,16 +239,12 @@
 
    
 
-
-
 ```java
 // 가져온 데이터(JSON)를 자료구조화 시켜서 Activity로 반환
 /*  일반적으로 서버쪽 웹 프로그램은 XML이나 JSON으로 결과 데이터를 제공한다
-	서버로부터 받은 데이터를 Java의 자료구조로 변환한다				*/
-/*  JSON Parsing Library를 이용해서 쉽고 편하게 JSON을 handling
+	서버로부터 받은 데이터를 Java의 자료구조로 변환한다				
+    JSON Parsing Library를 이용해서 쉽고 편하게 JSON을 handling
 	가장 대표적인 JSON 처리 Library 중 하나인 JACKSON Library 사용 */
-
-// JACKSON Library 설치
 ```
 
 
@@ -258,7 +257,7 @@
 >
 > JSON Parsing Library 중 가장 유명한 `JACKSON` 라이브러리를 이용해서 JSON 파일을 쉽고 편하게 handling 한다.
 >
-> [Android에 JACKSON 라이브러리 설치하기]
+> [Android에 JACKSON 라이브러리 설치하기](https://github.com/Jzee21/TIL/blob/master/Android/Gradle.md)
 
 ```java
 ObjectMapper mapper = new ObjectMapper();
@@ -338,4 +337,10 @@ public void handleMessage(@NonNull Message msg) {
 > ```
 >
 > 로 줄여서 사용 시, 데이터의 수신이 정상적으로 이루어지지 않는다.
+
+
+
+## Book Search Expansion
+
+> 위의 Book Search 앱은 
 
