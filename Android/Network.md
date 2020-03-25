@@ -340,7 +340,166 @@ public void handleMessage(@NonNull Message msg) {
 
 
 
+---
+
 ## Book Search Expansion
 
-> 위의 Book Search 앱은 
+> 위의 Book Search 앱은 Keyword를 이용해 검색시
+>
+> Web Application으로부터 책들의 제목만을 String[] 형식으로 불러왔다
+>
+> 확장된 버전에서는 Keyword를 이용해 검색시
+>
+> 책들의 제목과 ISBN 코드를 불러와 책들의 목록을 View에 리스트로 출력하고,
+>
+> 리스트의 특정 책을 선택시 해당 책의 ISBN 코드를 이용해 책의 세부 내용을 새로운 Activity에서 보여주도록 한다
+
+> 기본 구성은 동일하다
+
+
+
+### Runnable
+
+```java
+class BookSearchRunnable implements Runnable {
+	// .....   
+    @Override
+    public void run() {
+        
+    }
+}
+```
+
+- `run()` method 내부 구성은 위의 기본 앱과 동일하지만,
+
+  JSON 데이터의 사용에서 조금의 차이가 난다.
+
+
+
+### JSON to BOOK Array
+
+> String 배열이 아닌, Book 객체의 배열로 JSON 파일을 바꾸도록 한다.
+
+1. BookVO class
+
+   ```java
+   class BookVO {
+   
+       // field
+       private String isbn, title, date;
+       private int page, price;
+       private String author;
+       private String translator;
+       private String supplement;
+       private String publisher;
+       private String imgurl, imbase64;
+   
+       // constructor
+       public BookVO() {}
+       
+       // private field method
+       // getter, setter
+       // ... 생략 ...
+   }
+   ```
+
+
+
+2. JSON String to BookVO Array
+
+   ```java
+   String jsonData = responseText.toString();
+   
+   ObjectMapper mapper = new ObjectMapper();
+   BookVO[] resultArr = 
+       mapper.readValue(jsonData, BookVO[].class);	// *
+   ```
+
+   - 변환할 객체 타입이 `String[].class` 에서 `BookVO[].class`로 변경
+
+
+
+### Handler로 전달
+
+```java
+Bundle bundle = new Bundle();
+bundle.putSerializable("BOOKLIST", resultArr);	// * 변동사항
+
+Message msg = new Message();
+msg.setData(bundle);
+
+handler.sendMessage(msg);
+```
+
+- `Bundle.putStringArray()` 메서드 대신,
+
+  `Bundle.putSerializable()` 메서드를 사용하여
+
+  기본적인 자료형 외에도 Object 타입의 객체들을 보낼 수 있다.
+
+
+
+### Handler로 수신
+
+> Thread에서 전달한 데이터를 Activity 에서 받는다.
+
+```java
+private ListView detailSearchList;
+private BookVO[] bookList;			// Activity
+```
+
+
+
+```java
+@Override
+public void handleMessage(@NonNull Message msg) {
+    Bundle bundle = msg.getData();
+    bookList = (BookVO[]) bundle.getSerializable("BOOKLIST");
+
+    String[] titles = new String[bookList.length];
+    int index = 0;
+    for (BookVO vo : bookList) {
+        titles[index++] = vo.getTitle();
+    }
+
+    ArrayAdapter adapter = 
+        new ArrayAdapter(getApplicationContext(),
+ 		android.R.layout.simple_list_item_1, titles);
+    detailSearchList.setAdapter(adapter);
+}
+```
+
+
+
+### ListView의 특정 요소
+
+> `ListView`의 목록 중에서 특정 한개의 요소를 터치했을 때의 Listener가 존재한다
+>
+> Listener를 이용해 선택한 책의 ISBN 데이터를 꺼낸다
+
+```java
+detailSearchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView<?> parent, 
+                            View view, int position, long id) {
+
+        Toast.makeText(getApplicationContext(), 
+                       bookList[position].getIsbn(), 
+                       Toast.LENGTH_SHORT).show();
+
+    }
+});
+```
+
+- `OnItemClickListener()` Listener를 이용해서
+
+  ListView의 목록들 중 특정 하나의 item이 선택되었을 때의 Event를 처리할 수 있다.
+
+- `onItemClick()` 메서드를 Override 하여 Event를 처리한다.
+
+- 매개변수 중 `int position`을 이용하여 `ListView`의 몇 번째 요소가 선택되었는지 알 수 있다.
+
+- 위에서는 `Toast` 메세지를 이용하여 선택된 책의 ISBN 코드를 보여주도록 테스트코드를 작성했다.
+
+
 
