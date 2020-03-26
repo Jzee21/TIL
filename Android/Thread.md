@@ -66,7 +66,7 @@ startBtn.setOnClickListener(new View.OnClickListener() {
 
 
 
-## Widget 접근
+## Widget 접근 (사용 주의)
 
 > Thread 의 동작상태를 확인하기 위해
 >
@@ -101,7 +101,7 @@ class MyRunnable implements Runnable {
 
 
 
-### 주의
+### 주의사항
 
 > 위의 예제에서는 Thread 내부에서 View Component를 직접 접근하여 설정하고 있다.
 >
@@ -138,7 +138,7 @@ class MyRunnable implements Runnable {
 
 
 
-## Widget 접근 (Handler)
+## Widget 접근 (권장)
 
 > Thread와 Activity 사이에서 Data를 주고받기 위해서
 >
@@ -269,4 +269,14 @@ class MyRunnable implements Runnable {
     의 형태로 데이터를 전송한다. (ah.....)
 
 
+
+
+
+## Thread 재사용
+
+### Error
+
+> 사용이 완료된 Thread를 다시 Thread.start()를 하면
+>
+> `java.lang.IllegalThreadStateException` 가 발생한다.
 
