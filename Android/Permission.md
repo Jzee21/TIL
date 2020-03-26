@@ -14,6 +14,8 @@
 
 
 
+
+
 ## 앱 권한 요청
 
 > Android 6.0 (Marshmallow) 이상에서는 manifest 파일에 기술하는 것 이외에 추가적인 권한을 요구한다
@@ -24,12 +26,6 @@
 - 위험 권한(Dangerous Permission)
   - 위치, 전화, 카메라, 마이크, 문자, 일정, 주소록, 센서 등
   - 사용자의 개인정보와 관련된 모든것
-
-
-
-### 예제
-
-[전화걸기 권한 설정]
 
 
 
@@ -47,9 +43,7 @@
 
 
 
-
-
-## Network에 연걸
+## Network 연결 권한
 
 Application에서 Network 작업을 수행하기 위해서는 `mainfest`에 다음과 같은 권한을 포함해야 한다.
 
@@ -68,7 +62,9 @@ Application에서 Network 작업을 수행하기 위해서는 `mainfest`에 다�
 
 
 
-## HTTP 접속
+
+
+## HTTP 접속 권한
 
 HTTP 프로토콜로 네트워크에 접속하기 위해서는 `mainfest`에 다음과 같은 내용이 포함되어야 한다.
 
@@ -82,3 +78,14 @@ HTTP 프로토콜로 네트워크에 접속하기 위해서는 `mainfest`에 다
 > Android 9.0 (Pie) 버전 부터는 기본 Web Protocol이 HTTP에서 `HTTPS`로 변경되었다.
 >
 > 이에 따라 HTTP 프로토콜을 사용하기 위해서는 위와 같은 특수한 설정이 추가로 필요하다.
+
+
+
+
+
+## 통화 권한
+
+`Intent.md - 예제 4`
+
+[전화걸기 권한 설정](https://github.com/Jzee21/TIL/blob/master/Android/Intent.md)
+
