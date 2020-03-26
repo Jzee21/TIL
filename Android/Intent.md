@@ -16,7 +16,34 @@
 >
 > Explicit 방식과  Implicit 방식이 있다.
 
+1. Explicit 방식 (명시적)
+
+   - 호출할 대상 Activity의 클래스명을 알 때
+
+     클래스를 명시적으로 지정하여 호출하는 방법
+
+    
+
+2. Implicit 방식(묵시적)
+
+   - 호출할 대상 Activity의 클래스명 없이
+
+     Activity가 가진 속성을 검색하여
+     조건을 만족하는 Activity를 호출하는 방법
+
+   - 호출하는 Activity 내부의 Activity 뿐만 아니라
+
+     디바이스 내부의 모든 Activity들을 대상으로 검색하고
+
+     조건을 만족하는 Activity들 중에서 하나를 사용자가 선택할 수 있는 선택지를 제공한다
+
+
+
 ### Explicit 방식 (명시적)
+
+> 호출할 대상 Activity의 클래스명을 알 때
+>
+> 클래스를 명시적으로 지정하여 호출하는 방법
 
 ![image-20200318173108024](Image/image-20200318173108024.png)
 
@@ -128,6 +155,92 @@ startActivity(i);
 ```
 
 
+
+### Implicit 방식 (묵시적)
+
+#### 예제 1
+
+> Implicit 방식 사용 방법
+
+##### Target Activity
+
+1. Activity 생성 
+2. Manifest
+
+```xml
+<activity android:name=".Example14sub_ImplicitIntentActivity">
+  <intent-filter>
+    <action android:name="MY_ACTION"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="INTENT_TEST"/>
+  </intent-filter>
+</activity>
+```
+
+- <intent-filter>를 설정해 이동할 Activity를 찾도록 추가한다
+- <action>은 하나만 올 수 있다
+- <category>는 여려개가 올 수 있다
+
+
+
+##### 호출 Activity
+
+```java
+Intent i = new Intent();
+i.setAction("MY_ACTION");
+i.addCategory("INTENT_TEST");
+i.putExtra("SEND DATA", "안녕?");
+startActivity(i);
+```
+
+
+
+#### 예제 2 - ACTION_DIAL
+
+> 전화 다이얼을 호출한다
+
+##### Activity
+
+```java
+Intent i = new Intent();
+i.setAction(Intent.ACTION_DIAL);
+i.setData(Uri.parse("tel:01023456789"));
+startActivity(i);
+```
+
+<img src="Image/image-20200326105028046.png" alt="image-20200326105028046" style="zoom:60%;" />
+
+- Action은 안드로이드 기본으로 제공되는 `Intent.ACTION_DIAL` 속성값을 이용한다
+- Activity가 실행될 때, Data를 같이 넘겨줄 수 있다
+- 데이터는 `Android.net.Uri` 객체의 `Uri.parser` 메서드를 사용한다
+- 파라메터는 String형이며, 번호를 나타내는 접미사 `tel:`을 붙여준다
+
+
+
+#### 예제 3 - ACTION_VIEW
+
+> 웹 브라우저를 호출한다
+
+##### Activity
+
+```java
+Intent i = new Intent();
+i.setAction(Intent.ACTION_VIEW);
+i.setData(Uri.parse("http://www.naver.com"));
+startActivity(i);
+```
+
+![image-20200326104417566](Image/image-20200326104417566.png)
+
+- Action은 안드로이드 기본으로 제공되는 `Intent.ACTION_VIEW`속성값을 이용한다
+- [네이버](http://www.naver.com)를 실행하는 브라우저를 호출한다
+- 브라우저의 종류가 여러개일 경우, 사용자가 실행할 App(Activity)를 선택할 수 있다
+
+
+
+
+
+---
 
 ## Data 전달
 
