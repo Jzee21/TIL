@@ -238,6 +238,177 @@ startActivity(i);
 
 
 
+#### 예제 4 - ACTION_CALL
+
+> 번호를 다이얼에 입력해주는 것 이상으로
+>
+> 해당 번호로 전화를 걸어주는 기능 구현
+
+> 전화를 거는 것은 권한 설정이 필요하다  - [Permission](https://github.com/Jzee21/TIL/blob/master/Android/Permission.md)
+
+##### Manifest
+
+```xml
+<uses-permission android:name="android.permission.CALL_PHONE" />
+```
+
+
+
+##### Activity
+
+> Android 6.0 (Marshmallow) 부터 권한 설정이 강화되어
+>
+> 6.0 버전 이전과 이후의 사용 방식(사용 전 허가 획득)에 약간의 차이가 있다.
+
+0. 전화 걸기
+
+   - 권한이 설정되어 있다면 아래 코드로 전화를 걸 수 있다
+
+     ```java
+     Intent i = new Intent();
+     i.setAction(Intent.ACTION_CALL);
+     i.setData(Uri.parse("tel:0102345-6789"));
+     startActivity(i);
+     ```
+
+     
+
+1. 사용자의 `Android Version`을 확인한다
+
+   ```java
+   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+   ```
+
+   - if  -  Android Version이 6.0 버전 (M)  이상인 경우
+
+     - 권한이 설정되었는지 확인한다
+
+      
+
+   - else  -  Android Version이 5.1 버전 (L) 이하인 경우
+
+     - `[ 0. 전화걸기 ]`를 수행한다
+
+     
+
+2. 사용할 `통화사용 권한` 의 허가 여부를 확인한다
+
+   ```java
+   // Manifest.permission.CALL_PHONE* 통화 권한
+   int permissionResult =
+       ActivityCompat.checkSelfPermission(
+       	getApplicationContext(),
+   		Manifest.permission.CALL_PHONE);
+   
+   if (permissionResult == PackageManager.PERMISSION_DENIED)
+       // PackageManager.PERMISSION_DENIED : -1
+   ```
+
+   - if  -  권한이 허용되지 않은 경우
+
+     - 권한 허용이 이전에 거부되었는지 확인한다
+
+      
+
+   - else  -  권한이 허용된 경우
+
+     - `[ 0. 전화걸기 ]`를 수행한다
+
+      
+
+3. 권한 허용이 이전에 거부되었는지 확인한다
+
+   > 필요한 권한이 처음 요청했는지, 거부당한 권한을 다시 요청하는지 확인한다
+
+   ```java
+   if (shouldShowRequestPermissionRationale
+       				(Manifest.permission.CALL_PHONE))
+       // Boolean shouldShowRequestPermissionRationale(permission)
+   ```
+
+   - if  -  이전에 거부당한 권한을 다시 요청하는 경우
+
+     - AlertDialog를 이용해 권한을 다시 허용할 것인지 사용자에게 확인하고
+
+       `[ 4. 권한 요청 ]`을 수행한다.
+
+      
+
+   - else  -  필요한 권한을 처음 요청하는 경우
+
+     - `[ 4. 권한 요청 ]`을 수행한다
+
+      
+
+4. 권한 요청
+
+   > 필요한 권한(통과 권한)을 `사용자에게` 요청한다
+
+   ```java
+   requestPermissions(String[] permissions, int requestCode)
+   ```
+
+   - 필요한 권한`들`을 사용자에게 요청하는 메서드
+
+     - `String[] permissions` 매개변수를 이용해
+
+       다수의 권한을 연속적으로 요청할 수 있다
+
+     - `requestCode`를 이용해 권한을 요청한 case를 구분한다
+
+   - 위 메서드를 실행하면 아래와 같이 사용자에게 권한을 요청한다.
+
+     ![image-20200326114338947](Image/image-20200326114338947.png)`
+
+   - `[ 5. 권한 요청 응답 ]`을 수행한다
+
+   
+
+5. 권한 요청 응답
+
+   > 사용자에게 UI를 이용해 권한을 요청하고 얻은 요청의 결과를
+   >
+   > `onRequestPermissionsResult()`를 통해 처리한다
+
+   ![image-20200326114908585](Image/image-20200326114908585.png)
+
+   ```java
+   public void onRequestPermissionsResult(int requestCode, 
+                              @NonNull String[] permissions, 
+                              @NonNull int[] grantResults) {
+       // ..................................................
+   }
+   ```
+
+   - requestCode : 권한을 요청한 Event를 개발자가 구분하도록 한다
+   - permissions : 사용자에게 허가를 요청한 권한들의 목록
+   - grantResults : 권한들이 목록과 매칭되는 권한들의 요청 결과
+
+   
+
+   ```java
+   if (requestCode == 1000)
+   ```
+
+   1. `[ 4. 권한 요청 ]` 에서  설정한 `requestCode`를 이용해
+
+      ``onRequestPermissionsResult()`를 호출한 Event를 구분한다.
+
+       
+
+   ```java
+   if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+   ```
+
+   2. UI를 통해 요청한 결과가 승인인지(`PERMISSION_GRANTED`) 확인한다
+      - if  -  `[ 0. 전화걸기 ]`를 수행한다
+      - else  -  기능의 실행이 취소된다
+        - (권한에 의한 기능 실행 불가를 사용자에게 Toast로 알려줘도?)
+
+
+
+
+
 
 
 ---
