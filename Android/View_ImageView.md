@@ -137,6 +137,98 @@ imageView.setImageBitmap(bitmap);
 
 
 
+### 4. Size 설정
+
+> View에 나타나는 이미지의 사이즈를 설정한다.
+>
+> 1. View의 설정파일인 XML에서 width와 height를 지정한다
+>
+>    - 픽셀 크기를 지정하는 방법
+>
+>    - match_parent, wrap_content 를 이용하여 지정하는 방법
+>    - layout_weight 를 이용하여 다른 View들과의 비율로 지정하는 방법
+>
+> 2. Avtivity에서 ImageView의 `LayoutParams`을 이용해 지정하는 방법
+>
+>    - 픽셀 크기를 지정하는 방법*
+>    - **스크린 사이즈의 비율을 이용해 지정하는 방법****
+
+> ScrollView를 사용할 경우 wrap_content 값이나 layout_weight 속성이 적용되지 않았다.
+
+- ImageView의 크기를 가져오는 방법
+
+  ```java
+  ViewGroup.LayoutParams param = imageView.getLayoutParams();
+  param.height
+  param.width
+  ```
+
+  - ImageView의 `getLayoutParams()` 메서드를 이용해
+
+    현재 ImageView가 할당받은 View의 크기를 알 수 있다.
+
+  - 변수명.height 또는 .width 를 이용하여 특정 값을 반환받을 수 있다
+
+  - ScrollView과 layout_weight  속성을 사용했을 때, 음수의 값이 반환되었다...
+
+   
+
+- ImageView의 크기를 지정하는 방법
+
+  ```java
+  param.height = 100;
+  param.width = 100;
+  imageView.setLayoutParams(param);
+  ```
+
+  - param 객체의 값을 특정 값으로 변경 후
+
+    `setLayoutParams(param)` 메서드를 이용해 사이즈를 지정할 수 있다
+
+   
+
+- Deviec의 Screen 크기를 가져오는 방법
+
+  ```java
+  DisplayMetrics metrics = new DisplayMetrics();
+  WindowManager manager = (WindowManager) getApplicationContext()
+      .getSystemService(Context.WINDOW_SERVICE);
+  manager.getDefaultDisplay().getMetrics(metrics);
+  
+  metrics.heightPixels;
+  metrics.widthPixels;
+  ```
+
+  - ... 짜잔
+
+   
+
+- 스크린 크기를 이용한 ImageView의 크기 지정
+
+  ```java
+  param.height = (int) (metrics.heightPixels * 0.5);
+  param.width = (int) metrics.widthPixels;
+  imageView.setLayoutParams(param);
+  ```
+
+  - 정수의 값을 지정해준다
+
+   
+
+  또는,
+
+  ```java
+  imageView.setMaxHeight((int) (metrics.heightPixels*0.5));
+  ```
+
+  다른 View들과의 관계로 인한 동적인 사이즈 조절을 설정하는 대신
+
+  최대 또는 최소 사이즈를 지정할 수 있다.
+
+
+
+
+
 ---
 
 ## 주의사항
