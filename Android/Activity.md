@@ -235,7 +235,7 @@
 
   - Activity.java에서 xml의 id를 이용해 항목을 추가할 수 있다
   - List 객체를 이용해 항목들을 저장한다
-  - Adapter 객체를 이용해 Spinner 객체에 항목들을 연결한다
+  - Adapter 객체를 이용해 Spinner 객체에 항목들을 지정한다
 
   ```java
   Spinner spinner = (Spinner) findViewById(R.id.mySpinner);
@@ -262,6 +262,15 @@
 - ListView
 
   - Spinner와 같이 Activity에서 항목을 지정할 수 있다
+
+  - Adapter 객체를 이용해 ListView 객체에 항목을 지정한다
+
+    ```java
+    ArrayAdapter adapter =
+        new ArrayAdapter(getApplicationContext(),
+                         android.R.layout.simple_list_item_1,
+                         resultData);
+    ```
 
 - (생략)
 
