@@ -472,7 +472,7 @@ con.setRequestProperty(						// *header에 인증키 추가
 
    
 
-  `"dovumemts"` 내부의 데이터를
+  `"documemts"` 내부의 데이터를
 
   String 타입에서   `ArrayList<KakaoBookVO>` 타입으로 변환한다.
 
@@ -509,10 +509,6 @@ con.setRequestProperty(						// *header에 인증키 추가
   
   startActivity(i);
   ```
-
-  
-
-
 
 
 
