@@ -85,7 +85,23 @@ HTTP 프로토콜로 네트워크에 접속하기 위해서는 `mainfest`에 다
 
 ## 통화 권한
 
+```xml
+<uses-permission android:name="android.permission.CALL_PHONE" />
+```
+
 `Intent.md - 예제 4`
 
 [전화걸기 권한 설정](https://github.com/Jzee21/TIL/blob/master/Android/Intent.md)
+
+
+
+
+
+## SMS 수신 권한
+
+```xml
+<uses-permission android:name="android.permission.RECEIVE_SMS" />
+```
+
+
 
