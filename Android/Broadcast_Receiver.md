@@ -32,8 +32,10 @@
 
 > 등록하는 방법에는 2가지가 있다.
 >
-> 1. AndroidManifest.xml 파일에 명시 (정적 등록)
-> 2. 코드 상에서 Receiver를 만들어서 등록 (동적 등록)
+> 1. Manifest에 등록된 Receiver (정적 등록)
+> 2. Context에 등록된 Receiver (동적 등록)
+>
+> [Android Developer - Broadcast Receiver](https://developer.android.com/guide/components/broadcasts?hl=ko#java)
 
 
 
@@ -42,6 +44,10 @@
 > 외부 `Broadcast Receiver Component` 를 생성하고,
 >
 > 이를 `AndroidManifest.xml` 파일에 명시하여 등록한다.
+
+> Manifest에 Receiver를 등록한 경우 앱이 아직 실행중이 아니라면 시스템에서 앱을 실행한다.
+>
+> Android 8.0 (O, Oreo) 부터는 일부 Broadcast를 제외하면 manifest에 Receiver를 등록할 수 없다.  - [Android Developer - Broadcast-exceptions](https://developer.android.com/guide/components/broadcast-exceptions?hl=ko)
 
 1. 외부 `Broadcast Receiver` 생성
 
@@ -87,7 +93,11 @@
 
 ### 2.  동적 등록
 
-> `Code` 상에서 `Receiver 객체`를 만들어서 등록한다.
+> `Context` 에서 `Receiver 객체`를 만들어서 등록한다.
+
+> 등록한 컨텍스트가 유효한 동안 브로드캐스트를 수신하기 때문에
+>
+> 앱이 `onDestroy()` 메서드에서 등록을 취소하도록 해야한다.
 
 1. `IntentFilter` 객체 생성
 
