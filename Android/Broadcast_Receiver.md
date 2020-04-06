@@ -193,7 +193,7 @@ sendBroadcast(i);
 
 ---
 
-## 예제 2
+## 예제 2 - SMS 메세지 수신
 
 > SMS 수신 시 발신자와 메세지 내용, 수신 날짜를 Activity에 나타낸다
 
@@ -209,13 +209,11 @@ sendBroadcast(i);
 
 2. Activity
 
-   ```java
-   
-   ```
+   [Check Permission](https://github.com/Jzee21/TIL/blob/master/Android/Permission.md) - `사용자 권한 요청`
 
 
 
-### 2. Broadcast Receiver 등록
+### 2. SMS Receiver 등록
 
 > 외부 Component 생성 후 정적 등록 (AndroidManifest.xml)
 
@@ -228,5 +226,119 @@ sendBroadcast(i);
     	<action android:name="android.provider.Telephony.SMS_RECEIVED" />
     </intent-filter>
 </receiver>
+```
+
+
+
+### 3. SMS 메세지 수신
+
+> 외부 Component로 Broadcast Receiver를 생성하면 아래와 같은
+>
+> `onReceive()` 메서드가 기본적으로 Override 되어있다.
+
+```java
+@Override
+public void onReceive(Context context, Intent intent) {
+    // TODO: This method is called when the BroadcastReceiver is receiving
+    // an Intent broadcast.
+    throw new UnsupportedOperationException("Not yet implemented");
+}
+```
+
+
+
+1. SMS Message 확인
+
+   ```java
+   Bundle bundle = intent.getExtras();
+   Object[] obj = (Object[]) bundle.get("pdus");
+   ```
+
+   - SMS 정보는 `"pdus"` 라는 Key 값으로 저장되어있다. (반환형 : Object)
+
+   - SMS는 짧은 시간에(동시에 가까운 시간에) 여러개의 SMS가 도착할 수 있다.
+
+     따라서, Object[] 형태의 리스트로 SMS를 꺼낸다
+
+   - Object 객체 1개가 SMS 1건의 정보를 갖는다.
+
+    
+
+2. SmsMessage 객체로 Converting
+
+   ```java
+   SmsMessage[] message = new SmsMessage[obj.length];
+   
+   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+       String format = bundle.getString("format");
+       message[0] = SmsMessage.createFromPdu((byte[]) obj[0], format);
+   } else {
+       message[0] = SmsMessage.createFromPdu((byte[]) obj[0]);
+   }
+   ```
+
+   - Object 객체로 받은 SMS 메세지를 `SmsMessage` 객체로 변환한다.
+   - Android 6.0 버전을 기준으로 `format`을 필요로 한다.
+
+    
+
+3. Activity로 데이터 전송
+
+   ```java
+   // SMS 데이터 반환
+   String sender = message[0].getOriginatingAddress();
+   String msg = message[0].getMessageBody();
+   String reDate = new Date(message[0].getTimestampMillis()).toString();
+   
+   // Activity 전송
+   Intent i = new Intent(context, ___Activity.class);
+   i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+   i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+   i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+   
+   i.putExtra("sender", sender);
+   i.putExtra("msg", msg);
+   i.putExtra("date", reDate);
+   
+   context.startActivity(i);
+   ```
+
+   - `getOriginatingAddress()` :  SMS의 발신자 번호를 반환한다.
+   - `getMessageBody()` :  SMS의 내용을 반환한다.
+   - `getTimestampMillis()` :  SMS를 수신한 시간을 반환한다.
+
+
+
+```java
+@Override
+public void onReceive(Context context, Intent intent) {
+    
+    Bundle bundle = intent.getExtras();
+    Object[] obj = (Object[]) bundle.get("pdus");
+
+    SmsMessage[] message = new SmsMessage[obj.length];
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        String format = bundle.getString("format");
+        message[0] = SmsMessage.createFromPdu((byte[]) obj[0], format);
+    } else {
+        message[0] = SmsMessage.createFromPdu((byte[]) obj[0]);
+    }
+
+    String sender = message[0].getOriginatingAddress();
+    String msg = message[0].getMessageBody();
+    String reDate = new Date(message[0].getTimestampMillis()).toString();
+
+    Intent i = new Intent(context, ___Activity.class);
+    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+    i.putExtra("sender", sender);
+    i.putExtra("msg", msg);
+    i.putExtra("date", reDate);
+
+    context.startActivity(i);
+}
 ```
 
