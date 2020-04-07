@@ -215,6 +215,10 @@ public void onOpen(SQLiteDatabase db) {
 >
 > `onUpgrade()` 메서드가 호출된 후, `onOpen()` 메서드가 실행된다.
 
+> 앱이 업데이트되어 배포될 때, DB 스키마를 다시 생성할 때 주로 사용된다.
+>
+> 기존의 DB를 drop 하고 새로운 DB를 구성한다.
+
 ```java
 @Override
 public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
