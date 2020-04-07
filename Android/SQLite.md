@@ -14,27 +14,62 @@
 >
 >  AAC의 `Room`의 사용을 강력하게 권장한다.
 
+> Android에서 Database은 각 어플리케이션마다 구분된 공간에 저장된다.
+
 
 
 ## SQLite 기초
 
+> Exam01
+
+### DB 생성
+
 ```java
-String dbName = _21_dbNameEt.getText().toString();
+private SQLiteDatabase database;
+
+String dbName = getString(R.string.database_name);
 database = openOrCreateDatabase(dbName, MODE_PRIVATE, null);
+```
 
-//
-getString(R.string.channel_name);
-//
+- name  :  읽어들일 DB의 이름
 
-String tableName = _21_tableNameEt.getText().toString();
+- mode  :  DB를 읽는 방식
+
+  - MODE_PRIVATE  :  0x0000
+
+    읽기 쓰기가 가능한 일반적인 DB를 생성하거나 오픈
+
+- factory  :  null 사용
+
+> 이렇게 생성된 Database는 Device 내부의
+>
+> `/data/data/{app_package}/databases/{dbName}` 형태로 저장된다.
+>
+> (dbName에는 확장자가 포함된다.)
+
+
+
+### Table 생성
+
+```java
+String tableName = getString(R.string.table_name);
 String sql = "CREATE TABLE IF NOT EXISTS " + tableName
     + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, "
     + "name TEXT, age INTEGER, mobile TEXT)";
 database.execSQL(sql);
+```
 
-String empName = _21_empNameEt.getText().toString();
-int empAge = Integer.parseInt(_21_empAgeEt.getText().toString());
-String empMobile = _21_empMobileEt.getText().toString();
+- `execSQL()`   :  select 계열이 아닌 SQL 문장을 실행할 때 사용
+- `rawQuery()`  :  select 계열의 SQL 문장을 실행할 때 사용
+
+
+
+### Data 입력
+
+```java
+String empName = empNameEt.getText().toString();
+int empAge = Integer.parseInt(empAgeEt.getText().toString());
+String empMobile = empMobileEt.getText().toString();
 
 String sql = "INSERT INTO emp(name, age, mobile) VALUES "
     + "('" + empName + "', " + empAge + ", '" + empMobile + "')";
@@ -43,24 +78,46 @@ database.execSQL(sql);
 
 
 
-### 예제 1
+
+
+## Cursor
+
+> Database를 불러오면 Table 형태로 받는다
+>
+> Cursor는 Table을 `row` 단위로 처리하도록 돕는다.
+
+> Exam01의 데이터 출력
+
+```java
+// database load
+String sql = "SELECT _id, name, age, mobile FROM emp";
+Cursor cursor = database.rawQuery(sql, null);
+
+// 다음 줄 확인
+cursor.moveToNext();
+
+cursor.getInt(0);
+cursor.getString(1);
+```
+
+![image-20200407130005843](Image/image-20200407130005843.png)
 
 
 
 
 
 
+## SQLiteOpenHelper
+
+> 2017년 이후 Android Developer에서는
+>
+> 해당 방식을 `Low Level API`로서 구현시 요류발생의 가능성이 높아
+>
+> AAC의 Doom 을 사용할 것을 강력 추천하고있다.
 
 
-## Low Level API
 
-> `SQLiteOpenHelper`를 사용하는 방법과, 이를 사용하지 않는 방법이 있다.
-
-
-
-
-
-### SQLiteOpenHelper
+### 필수 구성
 
 > SQLiteOpenHelper 를 이용하기 위해서는 별도의 Class를 Define 해주어야 한다.
 
@@ -169,7 +226,7 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
 
 
-#### 호출 순서
+### 호출 순서
 
 ```java
 if ( DATABASE_NAME DB가 존재하는가? ) {
@@ -185,7 +242,9 @@ if ( DATABASE_NAME DB가 존재하는가? ) {
 
 
 
-#### 예제 2
+### Exam02
+
+> `SQLiteOpenHelper`를 이용한 Database 생성
 
 ```java
 class MyDBHelper extends SQLiteOpenHelper {
@@ -221,46 +280,13 @@ private SQLiteDatabase database;
 // ...
 MyDBHelper helper = new MyDBHelper(___Activity.this, dbName, 1);
 database = helper.getWritableDatabase();
-
 ```
 
 
-
-
-
-
-
-## Cursor
-
-> 예제 1
-
-```java
-String sql = "SELECT _id, name, age, mobile FROM emp";
-
-Cursor cursor = database.rawQuery(sql, null);
-
-cursor.moveToNext();
-
-cursor.getInt(0);
-cursor.getString(1);
-
-```
-
-![image-20200407130005843](Image/image-20200407130005843.png)
 
 
 
 ## Room
 
-
-
-
-
-
-
-## Table
-
-> Android System에서 SQLite는 각 앱별로 별도의 DB 공간을 가진다.
-
-
+> .....
 
