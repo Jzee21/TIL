@@ -431,6 +431,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+## Device File Explorer
+
+- Android Studio의 우측 상단의 돋보이 아이콘 클릭
+- `Device File Explorer` 검색![image-20200407094527516](Image/image-20200407094527516.png)
+
+
+
+![image-20200407094452876](Image/image-20200407094452876.png)
+
+
+
+
+
 ## 예제
 
 > 도서검색 Web Application & Android App 구현
