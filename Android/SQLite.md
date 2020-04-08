@@ -336,7 +336,7 @@ DB 저장 경로로 이동한다.
 
 ![image-20200408091825304](Image/image-20200408091825304.png).
 
-위 3개의 파일을 PC로 저장한다. (Save As...)
+위 `3개의 파일`을 PC로 저장한다. (Save As...)
 
 - `Device File Explorer` 실행 이후 DB의 상태가 변경된 이력이 있다면
 
@@ -344,3 +344,22 @@ DB 저장 경로로 이동한다.
 
 
 
+### DB 조회하기
+
+[Sqlitebrowser](https://sqlitebrowser.org/) 를 실행한다.
+
+( [DB Browser for SQLite - .zip (no installer) for 64-bit Windows](https://download.sqlitebrowser.org/DB.Browser.for.SQLite-3.11.2-win64.zip) 추천 )
+
+
+
+설치 후 `DB Browser for SQLite.exe` 를 실행한다.
+
+![image-20200408100720361](Image/image-20200408100720361.png)
+
+
+
+`데이터베이스 열기` 를 이용하여 디바이스에서 PC로 저장한 {DB_NAME}.db 파일을 오픈한다.
+
+> SQLitebrowser를 종료하면 db 파일을 제외한 2개의 파일이 삭제된다.
+>
+> 삭제되는 2개의 파일이 없으면 db를 조회할 수 없다.
