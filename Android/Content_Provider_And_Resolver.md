@@ -324,12 +324,12 @@ while (cursor.moveToNext()) {
         						ContactsContract.Contacts.DISPLAY_NAME));
     
     // 주소록 각 항목의 세부정보
-    Cursor cursor1 = getContentResolver().query(
+    Cursor infoCursor = getContentResolver().query(
         ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                     null, " = " + id, null, null);
-    while (cuser1.moveToNext) {
-        String mobile = cursor.getString(
-                        cursor.getColumnIndex(
+    while (infoCursor.moveToNext) {
+        String mobile = infoCursor.getString(
+                        infoCursor.getColumnIndex(
 						ContactsContract.CommonDataKinds.Phone.NUMBER));
     }
 }
