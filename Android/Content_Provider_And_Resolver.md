@@ -298,7 +298,40 @@ while (cursor.moveToNext()) {
 - 반환형 : Cursor 객체
 - 매개변수
   - Uri  uri	:  Provider를 호출하는 고유문자를 이용한 Uri 객체
+    - Google에서 제공하는 Provider는 System 내부에 존재한다.
   - String[]  projection   :  Table의 column명
-  - String selection  
+    - null  :  모든 컬럼 반환
+  - String selection  :  where절
   - String[]  selectionArgs
   - String sortOrder 
+
+
+
+### Exam03_Query2
+
+> 주소록에서 전화번호를 가져오는 예제
+
+```java
+// 주소록 목록
+Cursor cursor = 
+    getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
+                                           null, null, null, null);
+
+while (cursor.moveToNext()) {
+    String id = cursor.getString(cursor.getColumnIndex(
+        						ContactsContract.Contacts._ID));
+    String name = cursor.getString(cursor.getColumnIndex(
+        						ContactsContract.Contacts.DISPLAY_NAME));
+    
+    // 주소록 각 항목의 세부정보
+    Cursor cursor1 = getContentResolver().query(
+        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    null, " = " + id, null, null);
+    while (cuser1.moveToNext) {
+        String mobile = cursor.getString(
+                        cursor.getColumnIndex(
+						ContactsContract.CommonDataKinds.Phone.NUMBER));
+    }
+}
+```
+
