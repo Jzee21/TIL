@@ -152,6 +152,42 @@ btn.setOnAction((arg0) -> {
 
 
 
+> 주의!
+>
+> 구성요소의 이벤트 처리는 Thread를 이용해야 `ANR : Application Not Responding`를 피할 수 있다
+
+
+
+### Platform
+
+```java
+TextArea ta = new TextArea();
+Button btn = new Button();
+btn.setOnAction((arg0) -> {
+    addMsg(String msg)
+});
+```
+
+```java
+private void addMsg(String msg) {
+    Platform.runLater(new Runnable() {
+        @Override
+        public void run() {
+            ta.appendText(msg + "\n");
+        }
+    });
+//    Platform.runLater(() -> {
+//        ta.appendText(msg + "\n");
+//    });
+}
+```
+
+- `Platform.runLater()` 메서드에 `Runnable` 객체를 넘겨주면
+
+  내부적으로 Thread를 자동으로 생성하여 수행한다.
+
+
+
 ### 예제
 
 ```java
