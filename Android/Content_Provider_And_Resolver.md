@@ -141,7 +141,7 @@ public class ___ContentProvider extends ContentProvider {
 
 
 
-### Exam01_Provider
+### Exam01_Insert
 
 > Content Provider 를 이용하여 어플리케이션의 Database에 insert 하기
 
@@ -212,7 +212,36 @@ public class ___ContentProvider extends ContentProvider {
 
 
 
+### Exam02_Query
 
+- `___ContentProvider.java`
+
+  ```java
+  @Override
+  public Cursor query(Uri uri, String[] projection, String selection,
+                          String[] selectionArgs, String sortOrder) {
+      
+      Cursor cursor = database.query("person", projection,
+                  selection, selectionArgs, null, null, sortOrder);
+      return cursor;
+  }
+  ```
+
+  `database.query()`
+
+  - 반환형  :  Cursor
+  - 매개변수
+    - String  table  :  Table 이름
+    - String[]  projection  :  Table의 column 명
+    - String  selection  :  조건문(where절)
+    - String[]  selectionArgs  :  조건문에 사용할 값
+    - String groupBy
+    - String having
+    - String sortOrder  :  정렬 방향
+
+
+
+---
 
 ## Content Resolver
 
@@ -222,7 +251,7 @@ public class ___ContentProvider extends ContentProvider {
 
 
 
-### Exam01_Resolver
+### Exam01_Insert
 
 ```java
 String uriString = "content://com.multi.person.provider/person";
@@ -240,3 +269,36 @@ getContentResolver().insert(uri, values);
 - `Uri uri`  :  데이터를 제공하는 Provider를 찾기위한 고유문자
 - `ContentValues values`  :  Provider의 Table에 insert할 데이터를 담는 객체
   - HashMap의 형태로 데이터를 저장한다.
+
+
+
+### Exam02_Query
+
+```java
+String uriString = "content://com.multi.person.provider/person";
+Uri uri = new Uri.Builder().build().parse(uriString);
+
+String[] columns = new String[]{"name", "age", "mobile"};
+Cursor cursor = 
+    getContentResolver().query(uri, columns, null, null, "name ASC");
+
+personListTv.setText("");
+while (cursor.moveToNext()) {
+    String name = cursor.getString(0);
+    int age = cursor.getInt(1);
+    String mobile = cursor.getString(2);
+
+    String result = "recode : " + name + ", " + age + ", " + mobile + "\n";
+    personListTv.append(result);
+}
+```
+
+`getContentResolver().query()`
+
+- 반환형 : Cursor 객체
+- 매개변수
+  - Uri  uri	:  Provider를 호출하는 고유문자를 이용한 Uri 객체
+  - String[]  projection   :  Table의 column명
+  - String selection  
+  - String[]  selectionArgs
+  - String sortOrder 
