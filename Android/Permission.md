@@ -100,6 +100,33 @@ HTTP 프로토콜로 네트워크에 접속하기 위해서는 `mainfest`에 다
 <uses-permission android:name="android.permission.RECEIVE_SMS" />
 ```
 
+```java
+Manifest.permission.RECEIVE_SMS
+```
+
+
+
+
+
+### 주소록 권한
+
+```xml
+<uses-permission android:name="android.permission.READ_CONTACTS" />
+<uses-permission android:name="android.permission.WRITE_CONTACTS" />
+```
+
+```java
+android.Manifest.permission.READ_CONTACTS
+```
+
+
+
+#### Provider Uri
+
+```java
+ContactsContract.Contacts.CONTENT_URI
+```
+
 
 
 
