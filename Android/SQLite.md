@@ -294,3 +294,53 @@ database = helper.getWritableDatabase();
 
 > .....
 
+
+
+
+
+## SQLite 데이터 확인
+
+> Android 시스템에서 제공하는 SQLite 데이터베이스는
+>
+> DB를 생성한 어플리케이션의 고유 영역에 저장된다.
+
+> 내부 저장소에 저장된 DB를 PC로 복사해오고,
+>
+> [Sqlitebrowser](https://sqlitebrowser.org/)를 이용해 조회할 수 있다.
+
+
+
+### DB 저장 경로
+
+`/data/data/{app_package}/databases/{DATABASE_NAME}`
+
+
+
+### DB 가져오기
+
+> DB를 가지고 있는 가상 디바이스나, 실제 디바이스의 USB 디버깅 연결이 선행된다.
+
+![image-20200408091435815](Image/image-20200408091435815.png).
+
+`View - Tool Windows - Device File Explorer`
+
+
+
+DB 저장 경로로 이동한다.
+
+![image-20200408091632334](Image/image-20200408091632334.png).
+
+![image-20200408091704424](Image/image-20200408091704424.png).
+
+
+
+![image-20200408091825304](Image/image-20200408091825304.png).
+
+위 3개의 파일을 PC로 저장한다. (Save As...)
+
+- `Device File Explorer` 실행 이후 DB의 상태가 변경된 이력이 있다면
+
+  `Synchronize`를 사용한 후 저장한다
+
+
+
