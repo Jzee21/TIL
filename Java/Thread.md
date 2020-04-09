@@ -135,5 +135,12 @@ class MyRunnable implements Runnable {
 
   따라서, Thread가 언제 실행될지 사용자는 알 수 없다
 
+  (Thread Scheduler가 결정)
+
 - 다만, Thread의 수행 시점을 지정할 수 있는 방법 또한 존재한다.
 
+
+
+
+
+![image-20200409163809576](Image/image-20200409163809576.png)
