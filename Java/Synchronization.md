@@ -91,6 +91,27 @@ after Thread-1 - 200	|  | after Thread-0 - 100
 
 
 
+
+## Monitor 객체
+
+>  `a Monitor Object`
+
+`하나의 데이터(또는 객체) 마다 하나의 모니터를 결합`할 수 있으며, 모니터는 자신과 결합된 데이터에 동시에 `2개 이상의 쓰레드에 의해 접근할 수 없도록 막는 잠금(lock) 기능`을 제공하여 동기화를 수행한다.
+
+
+
+### 동작방식
+
+- 하나의 데이터(또는 객체) 마다 하나의 모니터 객체를 결합할 수 있다 (has)
+- 모니터 객체는 현재 락을 획득한 Thread와 Lock Count 정보를 관리한다.
+- `Thread Scheduler`에 의해 `Thread 단위`로 모니터락을 획득하거나 반환한다 (use)
+- 동기화 블럭(메서드 또는 블럭)을 수행할 때는 동기화 대상과 결합된 모니터락을 획득한 후에 진입이 가능하며, 동기화 블럭을 벗어날 때는 모니터락을 반환한다.
+
+
+
+
+
+
 ## synchronized 키워드
 
 동기화를 하는 방법 중 `synchronized 키워드`를 사용하는 방법이 있다.
@@ -98,7 +119,7 @@ after Thread-1 - 200	|  | after Thread-0 - 100
 이 키워드를 사용하는 방법은 2가지가 있다.
 
 1. Method 동기화
-2. 동기화 블록
+2. 동기화 블럭
 
 
 
@@ -143,7 +164,7 @@ after Thread-1 - 200
 
 
 
-### 동기화 블록
+### 동기화 블럭
 
 동기화를 메서드 전체가 아니라 메서드의 특정 부분만 동기화할 수 있다.
 
@@ -166,37 +187,27 @@ public void setNumber(int number) {
 
 - 메서드 내부에서 동기화를 필요로 하는 데이터의 저장과 출력 부분을
 
-  `synchronized` 라는 이름의 메서드 블록으로 감쌌다
+  `synchronized` 라는 이름의 메서드 블럭으로 감쌌다
 
 - `synchronized ()`의 매개변수를 모니터 객체(Monitor Object)라고 하며
 
-  해당 블록은 모니터 객체를 기준으로 동기화 됨을 나타낸다.
+  해당 블럭은 모니터 객체를 기준으로 동기화 됨을 나타낸다.
 
-  ex) 다수의 `synchronized 블록`이 동일한 하나의 모니터 객체를 요구할 때,
+  ex) 다수의 `synchronized 블럭`이 동일한 하나의 모니터 객체를 요구할 때,
 
-    한 시간에 다수의 블록 중 모니터 객체를 `Scheduler`에 의해 전달받은
+    한 시간에 다수의 블럭 중 모니터 객체를 `Scheduler`에 의해 전달받은
 
     단 하나의 메서드만 수행된다.
 
 
 
-### Monitor 객체
-
-`a Monitor Object`
-
-`하나의 데이터(또는 객체) 마다 하나의 모니터를 결합`할 수 있으며, 모니터는 자신과 결합된 데이터에 동시에 `2개 이상의 쓰레드에 의해 접근할 수 없도록 막는 잠금(lock) 기능`을 제공하여 동기화를 수행한다.
 
 
+# Reference Link
 
-`Thread Scheduler`는 Runnable 상태에서 Run 상태가 되는 Thread에게 모니터 객체를 주고
+[박철우의 블로그 : 자바 동기화 블록(Java Syncronized Blocks)](https://parkcheolu.tistory.com/15)
 
-Thread가 Block되거나 Terminated 될 때 모니터 객체를 수거한다.
+[천방지축 Developer Note : 자바 Thread 동기화 01_02](https://kiwi99.tistory.com/19)
 
-
-
-모니터 객체는 다수의 동기화 코드에 있어서 동기화되는 기준을 제시하며,
-
-동일한 하나의 모티너 객체를 사용하는 코드들(동기화 코드 블록) 중에서 한 시간에 모니터 객체를 가진 단 하나의 코드만 수행될 수 있도록 한다.
-
-
+[MakeYourDay : 모니터란 무었인가?](https://happy-coding-day.tistory.com/8)
 
