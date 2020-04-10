@@ -15,14 +15,17 @@
 ## Main()
 
 - Program의 시작지점
+
 - main() 이 종료되면 프로그램이 종료된다 (Entry Point)
 
-> 이런 관점에서 보면 프로그램은 실행흐름이 단 1개만 존재한다.
->
-> - 실행흐름을 Thread라고 한다.
-> - 단일 Thread 프로그램
+  > 이런 관점에서 보면 프로그램은 실행흐름이 단 1개만 존재한다.
+  >
+  > - 실행흐름을 Thread라고 한다.
+  > - 단일 Thread 프로그램
 
-> main() Thread에서 별도의 실행흐름(thread)을 파생
+- main() 은 하나의 Thread로서
+
+  main Thread에서 별도의 실행흐름(thread)을 파생할 수 있다.
 
 
 
@@ -141,6 +144,112 @@ class MyRunnable implements Runnable {
 
 
 
-
+## Thread Lifecycle
 
 ![image-20200409163809576](Image/image-20200409163809576.png)
+
+![image-20200410164133346](Image/image-20200410164133346.png)
+
+
+
+---
+
+# Synchronization
+
+[Java Synchronization](https://github.com/Jzee21/TIL/blob/master/Java/Synchronization.md)
+
+목차
+
+- Mult-Thread의 문제
+- Monitor 객체
+- synchronized 키워드
+  1. Method 동기화
+  2. 동기 화 블록
+
+
+
+---
+
+# Interrupt
+
+Thread의 종료에 있어 `Thread.stop()` 메서드가 시스템 자원의 안정성등에 문제가 있어 사용을 지양하고 `Interrupt`의 사용이 권장된다.
+
+수행중인 Thread를 즉시 종료하는 것이 아니라 Thread가 일시정지 상태가 되었을 때 스레드가 사용하던 자원을 반납하고 안정적으로 종료되도록 유도한다.
+
+
+
+```java
+Thread t = new Thread(()-> {
+    for (int i = 1; i <= 100; i++) {
+        try {
+            Thread.sleep(1000);
+            System.out.println(i + "\n");
+        } catch (InterruptedException e) {
+            break;
+        }
+    }
+});
+t.start();
+```
+
+```java
+t.interrupt();
+```
+
+- `interrupt()` 메서드가 수행되면 `InterruptedException`이 발생 대기한다.
+
+- Thread가 동작중에 `sleep()` 메서드에 의해 일시정지 상태가 되면
+
+  `InterruptedException` 예외가 발생하면 `catch 문`에서 Thread가 사용하는 자원을 반납하는 코드를 수행하도록 한다.
+
+
+
+---
+
+# Daemon
+
+기본적으로 Thread는 자신을 호출한 Thread와 무관한 동작기간을 갖는다.
+
+예를 들어 `main thread`가 모든 일을 끝내고 종료되어도 그가 실행시킨 thread들은 여전히 그들의 동작을 수행한다.
+
+
+
+`Daemon Thread`는 주 스레드의 작업을 돕는 보조 스레드의 역할을 하는 스레드로서
+
+`주 스레드가 종료되면 Daemon 스레드도 종료`된다.
+
+
+
+```java
+Thread t = new Thread(()-> {
+    for (int i = 1; i <= 100; i++) {
+        try {
+            Thread.sleep(1000);
+            System.out.println(i + "\n");
+        } catch (InterruptedException e) {
+            break;
+        }
+    }
+});
+t.setDaemon(true);
+t.start();
+```
+
+- `setDaemon(Boolean)`  메서드를 이용해 데몬스레드를 설정할 수 있다
+  - Boolean 매개변수 True  :  데몬스레드
+  - Boolean 매개변수 False  :  일반 스레드
+- **`반드시 Thread.start() 전에 호출되어야 한다.`**
+
+
+
+
+
+---
+
+# Reference Link
+
+[평범한 개발자 노트 : [Java] interrupt() 메소드를 이용하여 스레드 정지시키기](https://cornswrold.tistory.com/190)
+
+[개발자의 기록습관 : [Java] Thread의 interrupt() 메소드 (feat. Thread.stop())](https://ict-nroo.tistory.com/22)
+
+[평범한 개발자 노트 : [Java] 데몬스레드 (daemon thread)](https://cornswrold.tistory.com/195)
