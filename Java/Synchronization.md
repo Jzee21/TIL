@@ -205,9 +205,15 @@ public void setNumber(int number) {
 
 # Reference Link
 
-[박철우의 블로그 : 자바 동기화 스레드(Java Syncronized Blocks)](https://parkcheolu.tistory.com/15)
+- 자바 동기화 스레드(Java Syncrhronized blocks)
 
-[천방지축 Developer Note : 자바 Thread 동기화 01_02](https://kiwi99.tistory.com/19)
+  출처 : [https://parkcheolu.tistory.com/15](https://parkcheolu.tistory.com/15) 박철우의 블로그
 
-[MakeYourDay : 모니터란 무었인가?](https://happy-coding-day.tistory.com/8)
+- 자바 Thread 동기화 01_02
+
+  출처 : [https://kiwi99.tistory.com/19](https://kiwi99.tistory.com/19)천방지축 Developer Note
+
+- 모니터란 무었인가?
+
+  출처 : [https://happy-coding-day.tistory.com/8] MakeYourDay
 

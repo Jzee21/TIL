@@ -248,8 +248,14 @@ t.start();
 
 # Reference Link
 
-[평범한 개발자 노트 : [Java] interrupt() 메소드를 이용하여 스레드 정지시키기](https://cornswrold.tistory.com/190)
+- [Java] interrupt() 메소드를 이용하여 스레드 정지시키기
 
-[개발자의 기록습관 : [Java] Thread의 interrupt() 메소드 (feat. Thread.stop())](https://ict-nroo.tistory.com/22)
+  출처 : [https://cornswrold.tistory.com/190](https://cornswrold.tistory.com/190) 평범한 개발자 노트
 
-[평범한 개발자 노트 : [Java] 데몬스레드 (daemon thread)](https://cornswrold.tistory.com/195)
+- [Java] Thread의 interrupt() 메소드 (feat. Thread.stop())
+
+  출처 : [https://ict-nroo.tistory.com/22](https://ict-nroo.tistory.com/22) 개발자의 기록습관
+
+- [Java] 데몬스레드 (daemon thread)
+
+  출처 : [https://cornswrold.tistory.com/195](https://cornswrold.tistory.com/195) 평범한 개발자 노트
