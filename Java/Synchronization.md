@@ -205,7 +205,7 @@ public void setNumber(int number) {
 
 # Reference Link
 
-[박철우의 블로그 : 자바 동기화 블록(Java Syncronized Blocks)](https://parkcheolu.tistory.com/15)
+[박철우의 블로그 : 자바 동기화 스레드(Java Syncronized Blocks)](https://parkcheolu.tistory.com/15)
 
 [천방지축 Developer Note : 자바 Thread 동기화 01_02](https://kiwi99.tistory.com/19)
 
