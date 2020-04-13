@@ -1,5 +1,9 @@
 # Thread
 
+---
+
+## Thread란?
+
 기본 개념
 
 - Multiprocessing
@@ -12,7 +16,8 @@
 
 
 
-## Main()
+
+### Main()
 
 - Program의 시작지점
 
@@ -29,7 +34,7 @@
 
 
 
-## Thread 언제 쓰나?
+### Thread 언제 쓰나?
 
 1. 대용량의 데이터를 분산해서 처리해야 되는 경우
 2. 다수의 클라이언트를 처리하는 서버 프로그램
@@ -37,7 +42,7 @@
 
 
 
-## Thread의 사용 방법
+### Thread의 사용 방법
 
 > Java에서 Thread를 생성하는 방법은 2가지가 있다.
 
@@ -46,7 +51,7 @@
 
 
 
-### 1. 상속
+#### 1. 상속
 
 ```java
 public class ThreadTest {
@@ -89,7 +94,7 @@ class MyThread extends Thread {
 
 
 
-### 2. interface
+#### 2. interface
 
 ```java
 public class ThreadTest {
@@ -130,7 +135,7 @@ class MyRunnable implements Runnable {
 
 
 
-## Thread 수행 타이밍
+### Thread 수행 타이밍
 
 - Thread는 `Non Blocking Method`로 실행된다.
 
@@ -144,7 +149,7 @@ class MyRunnable implements Runnable {
 
 
 
-## Thread Lifecycle
+### Thread Lifecycle
 
 ![image-20200409163809576](Image/image-20200409163809576.png)
 
@@ -154,7 +159,7 @@ class MyRunnable implements Runnable {
 
 ---
 
-# Synchronization
+## Synchronization
 
 [Java Synchronization](https://github.com/Jzee21/TIL/blob/master/Java/Synchronization.md)
 
@@ -170,7 +175,7 @@ class MyRunnable implements Runnable {
 
 ---
 
-# Interrupt
+## Interrupt
 
 Thread의 종료에 있어 `Thread.stop()` 메서드가 시스템 자원의 안정성등에 문제가 있어 사용을 지양하고 `Interrupt`의 사용이 권장된다.
 
@@ -206,7 +211,7 @@ t.interrupt();
 
 ---
 
-# Daemon
+## Daemon
 
 기본적으로 Thread는 자신을 호출한 Thread와 무관한 동작기간을 갖는다.
 
@@ -239,6 +244,76 @@ t.start();
   - Boolean 매개변수 True  :  데몬스레드
   - Boolean 매개변수 False  :  일반 스레드
 - **`반드시 Thread.start() 전에 호출되어야 한다.`**
+
+
+
+
+
+# Thread Pool
+
+Java의 기본적인 작동 순서는
+
+1. 필요한 객체 생성(new)
+
+2. Heap 영역에 메모리 할당
+
+3. 메모리(객체)를 이용한 처리 (데이터 저장, method를 이용한 로직 처리)
+
+4. GC(Garbage Collector)에 의한 메모리 반환
+
+의 순서를 갖는다.
+
+하지만, 객체의 생성과 메모리 반환에는 생각보다 `많은 시간이 소요`된다.
+
+
+
+## Pool이란?
+
+사용할 객체를 미리 여러개 생성하여 Pool이라는 영역에 모아두고
+
+객체를 필요로 할 때 Pool에서 객체를 가져다 사용하고
+
+사용 후에는 객체를 Pool에 반납한다.
+
+
+
+## ExecutorService
+
+```java
+ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+executorService.execute(runnable);
+```
+
+- 사용하는 리소스를 제한할 수 있다
+- 고정된 리소스를 사용하여 상황에 따라 속도 저하를 유발할 수 있다
+
+
+
+```java
+((ThreadPoolExecutor)executorService).getPoolSize();
+```
+
+- Pool의 사이즈를 확인하는 method
+
+
+
+```java
+executorService = Executors.newCachedThreadPool();
+```
+
+- 갯수를 지정하지 않는다
+- System에서 판단하여 Pool의 사이즈를 조절한다.
+
+
+
+```java
+executorService.shutdown();
+// or
+executorService.shutdownNow();
+```
+
+- 더이상 사용하지 않는 Thread Pool은 종료해주어야 한다.
 
 
 
