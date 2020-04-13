@@ -14,8 +14,14 @@ dir				-- 디렉토리 내부 확인(간단)
 
 pwd				-- 현재 경로 확인
 
+whoami			-- 로그인한 user 확인
+
+ps				-- 현재 프로세스의 정보 출력
+jps				-- JVM에 의해 생성된 프로세스 정보 출력
+
 cat <f>			-- 파일 내용 출력 (입력x)
 gedit <f>		-- 파일 내용 출력 (입력o)
+head, tail
 
 touch <f>		-- 파일 생성 또는 실행(최종 수정 시간 변경)
 
@@ -55,7 +61,54 @@ init 0					-- 0 : 0~6	run level
 
 ```
 
+```termimal
+inode 자료구조
+파일에 대한 정보를 담고있다.
+```
 
+
+
+```termimal
+tar
+tar cvf : 압축
+tar xvf : 압축해제
+```
+
+
+
+```terminal
+vi
+-- command mode
+    yy	1줄 복사
+    dd	1줄 삭제
+    w	저장
+    q	나가기
+    wq	저장하고 나가기
+    !q	저장 안하고 나가기
+-- edit mode
+    i (insert)
+    a (append)
+```
+
+
+
+```termimal
+mount
+```
+
+
+
+```termimal
+chmod
+```
+
+
+
+```termimal
+yum
+```
+
+> 패키지 설치에 있어 의존성 패키지들을 설치하거나 삭제할 때 이를 편하게 관리해주는 명령어
 
 
 
