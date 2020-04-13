@@ -1,130 +1,5 @@
 # Java I/O
 
-## I/O
-
-> 데이터를 외부에서 읽거나, 외부로 출력하는 작업
-
-
-
-## Stream
-
->  data를 받아들이거나 보내는 통로로서
->
-> Java의 입출력은 Stream을 이용한다.
-
-
-
-Stream은 기본적으로
-
-1. InputStream
-2. OutputStream
-
-이 있다.
-
-
-
-```java
-System.out 	: public final static PrintStream out = null;
-System.out.println("Hello world!");
-```
-
-- Java에서 기본적으로 제공하는 객체, 메서드
-- Java 프로그램에서 Java 표준 출력(Dos)로 데이터를 전달하는 Stream 객체
-
-
-
-
-
-## 개선된 Stream
-
-> 기본적은 Stream 객체(InputStream, OutputStream)는 성능이 상당히 좋지 않다.
->
-> 이를 위해 기존의 Stream 객체를 이용하여 개선된 또 다른 Stream을 만들어 사용한다.
-
-```java
-InputStreamReader isr = new InputStreamReader(System.in);
-BufferedReader br = new BufferedReader(isr);
-```
-
-
-
-
-
-## InputStream
-
-> 데이터를 받기 위해서는 기본적으로 InputStream 객체가 필요하다.
->
-> InputStream 객체는 숫자를 받아들이기에는 좋을 수 있지만
->
-> 문자열을 읽어들이기에는 효율이 좋지 않다.(매우)
-
-```java
-InputStreamReader isr = new InputStreamReader(System.in);
-BufferedReader br = new BufferedReader(isr);
-```
-
-- `InputStreamReader`  : 기본적인 InputStream을 이용하여 만든 개선된 Stream
-
-  문자열을 받아들이기에는 InputStream 객체보다 좋지만, 한 번에 하나의 문자열만
-
-  받을 수 있다
-
-- `BufferedReader`  :  `readLine()` method를 이용하여 줄 단위로 문자열을 받는 기능을 제공한다
-
-
-
-## FileReader
-
-```java
-FileChooser fileChooser = new FileChooser();
-fileChooser.setTitle("Open File");
-File file = fileChooser.showOpenDialog(primaryStage);	// JavaFX
-
-try {
-    FileReader fr = new FileReader(file);	// FileNotFoundException
-    BufferedReader br = new BufferedReader(fr);
-    
-    String line = "";
-    while((line = br.readLine()) != null) {	// IOException
-        //...
-    }
-} catch (FileNotFoundException e) {
-    e.printStackTrace();
-} catch (IOException e2) {
-	e2.printStackTrace();
-}
-```
-
-
-
-
-
-## BufferedReader
-
-대표적인 입력 Stream
-
-단순 문자열을 처리할 때는 BufferedReader를 사용하면 된다.
-
-단, HashMap과 같은 자료구조 데이터를 저장할 때는 효과적이지 않다.
-
-
-
-## PrintWriter
-
-대표적인 출력 Strem
-
-
-
-## ObjectStream
-
-
-
-
-
----
-
-# Java I/O
-
 ## Java 입출력
 
 ### 입출력
@@ -137,9 +12,7 @@ try {
 
 > Java에서 입출력을 수행하기 위해서는 두 대상을 연결하고 데이터를 전송할 수 있는 무언가가 필요하며, 이것을 스트림(Stream)이라 한다.
 >
-> 스트림이란 데이터를 운반하는데 사용되는 연결통로로서
->
-> 단방향 통신만 가능하다.
+> 스트림이란 데이터를 운반하는데 사용되는 연결통로로서 단방향 통신만 가능하다.
 
 
 
@@ -194,15 +67,34 @@ OutputStream  >>  Writer
 
 ### InputStream, OutputStream
 
-
+[표준입출력](https://github.com/Jzee21/TIL/blob/master/Java/JavaIO.md#%ED%91%9C%EC%A4%80%EC%9E%85%EC%B6%9C%EB%A0%A5)
 
 
 
 ## 문자기반 스트림
 
+### InputStreamReader
+
+```java
+InputStreamReader isr = new InputStreamReader(System.in);
+```
+
+- 바이트 단위의 InputStream을 이용하여
+
+  문자기반 스트림인 InputStreamReader를 만들고 사용할 수 있다.
+
+- 한 번에 하나의 문자를 읽는다.
+
+
+
 ### FileReader, FileWriter
 
+```java
+File file = //.....
+FileReader fr = new FileReader(file);
+```
 
+- 파일로부터 데이터를 읽고 파일에 쓰는데 사용된다.
 
 
 
@@ -210,17 +102,80 @@ OutputStream  >>  Writer
 
 ### BufferedReader, BufferedWriter
 
+> 가장 많이 쓰이는 보조스트림으로
+>
+> 버퍼를 이용하여 입출력의 효율을 높일 수 있도록 해주는 역할을 한다
+
+```java
+InputStreamReader isr = new InputStreamReader(System.in);
+BufferedReader br = new BufferedReader(isr);
+```
+
+```java
+FileReader fr = new FileReader(file);
+BufferedReader br = new BufferedReader(fr);
+```
+
+- `readLine()` 메서드를 이용하여 라인 단위의 입출력 기능을 지원한다.
+
+
+
+```java
+FileReader fr = new FileReader(file);
+BufferedReader br = new BufferedReader(fr);
+
+String line = "";
+while((line = br.readLine()) != null) {
+    //...
+}
+```
+
 
 
 
 
 ## 표준입출력
 
+> Java의 표준입출력은 콘솔(Console, 도스창)을 통한 데이터 입력과 출력을 의미한다.
+>
+> Java는 프로그램이 실행되는 동시에 아래의 스트림을 자동으로 생성한다.
 
+```java
+public final class System {
+    public final static InputStream in = null;
+    public final static PrintStream out = null;
+    public final static PrintStream err = null;
+    // ...
+}
+```
+
+- System.in
+- System.out
+- System.err
 
 
 
 ## File
+
+```java
+FileChooser fileChooser = new FileChooser();
+fileChooser.setTitle("Open File");
+File file = fileChooser.showOpenDialog(primaryStage);	// JavaFX
+
+try {
+    FileReader fr = new FileReader(file);	// FileNotFoundException
+    BufferedReader br = new BufferedReader(fr);
+    
+    String line = "";
+    while((line = br.readLine()) != null) {	// IOException
+        //...
+    }
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+} catch (IOException e2) {
+	e2.printStackTrace();
+}
+```
 
 
 
@@ -229,6 +184,10 @@ OutputStream  >>  Writer
 ## 직렬화
 
 > 객체를 데이터스트림으로 만드는 것
+
+
+
+### ObjectStream
 
 
 
