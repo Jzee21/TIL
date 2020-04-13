@@ -233,6 +233,19 @@ public void start(Stage arg0) throws Exception {
 
 
 
+## FileChooser
+
+```java
+FileChooser fileChooser = new FileChooser();
+fileChooser.setTitle("Open File");
+
+File file = fileChooser.showOpenDialog(primaryStage);
+```
+
+
+
+
+
 ## Reference Link
 
 [[JavaFX] JavaFX 응용 프로그램 기본 코드](https://araikuma.tistory.com/377)
