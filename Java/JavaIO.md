@@ -67,7 +67,7 @@ OutputStream  >>  Writer
 
 ### InputStream, OutputStream
 
-[표준입출력](https://github.com/Jzee21/TIL/blob/master/Java/JavaIO.md#%ED%91%9C%EC%A4%80%EC%9E%85%EC%B6%9C%EB%A0%A5)
+[표준입출력](#%ED%91%9C%EC%A4%80%EC%9E%85%EC%B6%9C%EB%A0%A5)
 
 
 
@@ -188,6 +188,35 @@ try {
 
 
 ### ObjectStream
+
+> 데이터 구조를 파일로 저장하는 것을 지원한다.
+
+```java
+Map<String, String> map = new HashMap<String, String>();
+map.put("1", "퇴계이황");
+map.put("2", "율곡이이");
+map.put("3", "세종대왕");
+map.put("4", "신사임당");
+
+File file = new File("asset/StringData.txt");
+
+FileOutputStream fos;
+try {
+    fos = new FileOutputStream(file);			// FileNotFoundException
+    ObjectOutputStream oos = new ObjectOutputStream(fos);	// IOException
+    oos.writeObject(map);
+    oos.flush();
+
+    oos.close();
+    fos.close();
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
 
 
 
