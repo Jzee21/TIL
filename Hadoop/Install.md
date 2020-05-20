@@ -6,25 +6,80 @@
 
 빅데이터의 속성
 
-- 규모   - 데이터의 크기
-- B...
-- 속도   - 데이터를 ...
-- 정확성  - 빅데이터에 부여할 수 있는 신뢰 수준
-- 가치   - 빅테이터를 저장하고 IT 인프라 구조 시스템을 구현하는 비용
+- 3V
+
+	1. Volume   - 데이터의 생성 주기가 빠르다
+	2. Velocity   - 저장, 처리 속도가 빠르다
+	3. Variaty    - SNS 등  ( 형태가 다양  -  비정형 데이터 )
+
+- 5V
+
+	4. Veracity  - 데이터에 부여할 수 있는 신뢰 수준
+	5. Value      - 빅데이터를 저장하려고 IT 인프라 구조 시스템을 구현하는 비즈니스적으로 유용한 속성
+
+- 7V
+
+	6. Valiaity(정확성) - 어떤 결정을 내리는데 타당한 데이터인지 ㄴ판단하는 속성
+	7. Volatillty(휘발성) - 데이터가 얼마나 오래 저장되고, 타당하여 얼마나 사요 될 수 있는 속성
 
 
 
-3V
+## Hadoop이란?
 
-1. Volume   - 데이터의 생성 주기가 빠르다
-2. Velocity   - 저장, 처리 속도가 빠르다
-3. Variaty    - SNS 등  ( 형태가 다양  -  비정형 데이터 )
+Apache의 최상위 프로젝트 중 하나로
+
+대용량의 데이터를 저장하고 분석, 처리하기 위한 Framework
+
+
+
+### Hadoop의 특징
+
+1. 선형 확장을 지원
+
+   데이터 사용의 증가를 보면서 추후에 용량의 증가가 굉장히 용이하다
+
+2. 분석처리에 사용
+
+   Map/Reduce를 이용해서 대용량의 데이터 분석이 가능
+
+3. API 기반의 파일처리 시스템
+
+4. Immutable 파일 시스템
+
+   기본적으로 하둡에 한번 저장되면 수정되지 않는다고 가정한다
+
+   다만, 하둡 버전이 올라가면서 append, 삭제는 API를 통해서 가능하다
+
+5. Hadoop System은 Master Slave 구조
+
+   단점 : Master가 고장나면 전체 파일시스템을 사용할 수 없다
+
+   ​	: SPOF (Single Point of Failure)
+
+   ​	: Secondary Master를 사용한다.
 
 
 
 HDFS (Hadoop Distributed File System)
 
 
+
+Hadoop Mode
+
+- Standalone
+  - 단일 노드. Test용
+- Preudo Distributed
+  - 단일 Node에서 Cluster
+- Full Distributed
+  - 두 대 이상의 Node를 Cluster로 구성
+
+
+
+> CensOS : 7
+>
+> Hadoop : 2.9.2
+>
+> Java		: 1.8
 
 하둡 클러스터링(multi node 구성)
 
